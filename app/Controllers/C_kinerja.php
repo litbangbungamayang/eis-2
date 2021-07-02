@@ -15,4 +15,11 @@ class C_kinerja extends BaseController
 		//return view('Templates/app_layout', $data);
 		return view('kinerja');
 	}
+
+	public function getTargetKinerja(){
+		$kategori = $this->request->getGet('kat');
+		$pg = $this->request->getGet('pg');
+		$this->model_dashboard = model("M_Dashboard");
+		echo $this->model_dashboard->getTargetKinerja($kategori, $pg);
+	}
 }

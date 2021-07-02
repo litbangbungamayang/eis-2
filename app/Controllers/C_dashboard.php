@@ -67,13 +67,6 @@ class C_dashboard extends BaseController
 		echo (($this->model_dashboard->tesDb()));
 	}
 
-	public function getTargetKinerja(){
-		$kategori = $this->request->getGet('kat');
-		$pg = $this->request->getGet('pg');
-		$this->model_dashboard = model("M_Dashboard");
-		echo $this->model_dashboard->getTargetKinerja($kategori, $pg);
-	}
-
 	public function getTbSetting(){
 		$this->model_dashboard = model("M_Dashboard");
 		$pg = $this->request->getGet("pg");
