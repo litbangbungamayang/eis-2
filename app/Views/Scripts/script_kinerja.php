@@ -24,12 +24,27 @@
   var lbl_persen_tebu_ditebang_buma = $("#persen_tebu_ditebang_buma");
   var lbl_persen_tebu_ditebang_cima = $("#persen_tebu_ditebang_cima");
   var lbl_persen_tebu_ditebang_bcn = $("#persen_tebu_ditebang_bcn");
+  //-----------------------------------------
+  var lbl_persen_protas_buma = $("#persen_protas_buma");
+  var lbl_persen_protas_cima = $("#persen_protas_cima");
+  var lbl_persen_protas_bcn = $("#persen_protas_bcn");
+  //-----------------------------------------
   var lbl_ton_tebu_ditebang_buma = $("#ton_tebu_ditebang_buma");
   var lbl_ton_tebu_ditebang_cima = $("#ton_tebu_ditebang_cima");
   var lbl_ton_tebu_ditebang_bcn = $("#ton_tebu_ditebang_bcn");
+  //-----------------------------------------
+  var lbl_protas_buma = $("#protas_buma");
+  var lbl_protas_cima = $("#protas_cima");
+  var lbl_protas_bcn = $("#protas_bcn");
+  //-----------------------------------------
   var pgb_tebu_ditebang_buma = $("#progress_tebu_ditebang_buma");
   var pgb_tebu_ditebang_cima = $("#progress_tebu_ditebang_cima");
   var pgb_tebu_ditebang_bcn = $("#progress_tebu_ditebang_bcn");
+  //-----------------------------------------
+  var pgb_protas_buma = $("#progress_protas_buma");
+  var pgb_protas_cima = $("#progress_protas_cima");
+  var pgb_protas_bcn = $("#progress_protas_bcn");
+  //-----------------------------------------
   var arr_data_lhp_buma = [];
   var arr_data_lhp_cima = [];
   var arr_target_buma = [];
@@ -76,6 +91,18 @@
     var persen_tebu_digiling_cima = (ton_giling_total_cima)/target_tebu_digiling_cima || 0;
     var persen_tebu_digiling_bcn = (ton_giling_total_buma + ton_giling_total_cima)/
       (target_tebu_digiling_buma + target_tebu_digiling_cima);
+
+    var protas_buma = (Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd)) || 0;
+    var target_protas_buma = Number(arr_target_buma.protas_ts) || 0;
+    var persen_protas_buma = protas_buma/target_protas_buma || 0;
+    var protas_cima = (Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0;
+    var target_protas_cima = Number(arr_target_cima.protas_ts) || 0;
+    var persen_protas_cima = protas_cima/target_protas_cima || 0;
+    var protas_bcn = ((Number(arr_data_lhp_buma.ton_giling_ts_sd) + Number(arr_data_lhp_cima.ton_giling_ts_sd))/
+      (Number(arr_data_lhp_buma.ha_giling_ts_sd) + Number(arr_data_lhp_cima.ha_giling_ts_sd))) || 0;
+    var target_protas_bcn = (Number(arr_target_buma.tebu_digiling_ts) + Number(arr_target_cima.tebu_digiling_ts))/
+      (Number(arr_target_buma.luas_digiling_ts) + Number(arr_target_cima.luas_digiling_ts)) || 0;
+    var persen_protas_bcn = protas_bcn/target_protas_bcn || 0;
     //====== BUMA ===============
     lbl_persen_tebu_ditebang_buma.text(formatting.format(
       persen_tebu_digiling_buma * 100) + '%');
@@ -83,6 +110,10 @@
       formatting.format(target_tebu_digiling_buma) + ' ton');
     pgb_tebu_ditebang_buma.css('width', persen_tebu_digiling_buma*100 + '%').attr('aria-valuenow', persen_tebu_digiling_buma*100);
     pgb_tebu_ditebang_buma.css('background-color', "hsl(" + (persen_tebu_digiling_buma*150) + ",50%,50%)");
+    lbl_persen_protas_buma.text(formatting.format(persen_protas_buma * 100) + '%');
+    lbl_protas_buma.text(formatting.format(protas_buma) + ' ton/ha dari ' + formatting.format(target_protas_buma) + ' ton/ha');
+    pgb_protas_buma.css('width', persen_protas_buma*100 + '%').attr('aria_valuenow', persen_protas_buma*100);
+    pgb_protas_buma.css('background-color', "hsl(" + (persen_protas_buma*150) + ",50%,50%)");
     //===========================
     //====== CIMA ===============
     lbl_persen_tebu_ditebang_cima.text(formatting.format(
@@ -91,6 +122,10 @@
       formatting.format(target_tebu_digiling_cima) + ' ton');
     pgb_tebu_ditebang_cima.css('width', persen_tebu_digiling_cima*100 + '%').attr('aria-valuenow', persen_tebu_digiling_cima*100);
     pgb_tebu_ditebang_cima.css('background-color', "hsl(" + (persen_tebu_digiling_cima*150) + ",50%,50%)");
+    lbl_persen_protas_cima.text(formatting.format(persen_protas_cima * 100) + '%');
+    lbl_protas_cima.text(formatting.format(protas_cima) + ' ton/ha dari ' + formatting.format(target_protas_cima) + ' ton/ha');
+    pgb_protas_cima.css('width', persen_protas_cima*100 + '%').attr('aria_valuenow', persen_protas_cima*100);
+    pgb_protas_cima.css('background-color', "hsl(" + (persen_protas_cima*150) + ",50%,50%)");
     //===========================
     //====== BCN ================
     lbl_persen_tebu_ditebang_bcn.text(formatting.format(
@@ -99,11 +134,16 @@
       formatting.format(target_tebu_digiling_buma + target_tebu_digiling_cima) + ' ton');
     pgb_tebu_ditebang_bcn.css('width', persen_tebu_digiling_bcn*100 + '%').attr('aria-valuenow', persen_tebu_digiling_bcn*100);
     pgb_tebu_ditebang_bcn.css('background-color', "hsl(" + (persen_tebu_digiling_bcn*150) + ",50%,50%)");
+    lbl_persen_protas_bcn.text(formatting.format(persen_protas_bcn * 100) + '%');
+    lbl_protas_bcn.text(formatting.format(protas_bcn) + ' ton/ha dari ' + formatting.format(target_protas_bcn) + ' ton/ha');
+    pgb_protas_bcn.css('width', persen_protas_bcn*100 + '%').attr('aria_valuenow', persen_protas_bcn*100);
+    pgb_protas_bcn.css('background-color', "hsl(" + (persen_protas_bcn*150) + ",50%,50%)");
     //===========================
     //=========================================================
+
   }
+
   function defaultLoad(){
-    refreshData();
     setInterval(function(){ refreshData() }, 5000);
   }
   refreshData();
