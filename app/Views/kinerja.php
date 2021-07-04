@@ -328,6 +328,82 @@
               </div>
             </div>
           </div>
+          <!-- Rendemen -->
+          <div class="col-sm-6 col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Rendemen</h3>
+                <div class="row row-cards">
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center">
+                          <div class="subheader">Bungamayang</div>
+                          <div class="ms-auto lh-1">
+                            <!-- placeholder untuk pojok kanan atas -->
+                          </div>
+                        </div>
+                        <div class="h1 mb-3" id="persen_rend_buma"></div>
+                        <div class="d-flex mb-2">
+                          <div id="rend_buma">0</div>
+                        </div>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar" style="width: 0%; background-color: white" role="progressbar"
+                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progress_rend_buma">
+                            <span class="visually-hidden">75% Complete</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center">
+                          <div class="subheader">Cinta Manis</div>
+                          <div class="ms-auto lh-1">
+                            <!-- placeholder untuk pojok kanan atas -->
+                          </div>
+                        </div>
+                        <div class="h1 mb-3" id="persen_rend_cima">0</div>
+                        <div class="d-flex mb-2">
+                          <div id="rend_cima">0</div>
+                        </div>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar" style="width: 0%; color=" role="progressbar"
+                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progress_rend_cima">
+                            <span class="visually-hidden">75% Complete</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center">
+                          <div class="subheader">BCN</div>
+                          <div class="ms-auto lh-1">
+                            <!-- placeholder untuk pojok kanan atas -->
+                          </div>
+                        </div>
+                        <div class="h1 mb-3" id="persen_rend_bcn">0</div>
+                        <div class="d-flex mb-2">
+                          <div id="rend_bcn">0</div>
+                        </div>
+                        <div class="progress progress-sm">
+                          <div class="progress-bar bg-blue" style="width: 0%" role="progressbar"
+                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="progress_rend_bcn">
+                            <span class="visually-hidden">75% Complete</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
   </div>

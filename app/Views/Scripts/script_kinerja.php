@@ -37,6 +37,10 @@
   var lbl_persen_gmt_cima = $("#persen_gmt_cima");
   var lbl_persen_gmt_bcn = $("#persen_gmt_bcn");
   //-----------------------------------------
+  var lbl_persen_rend_buma = $("#persen_rend_buma");
+  var lbl_persen_rend_cima = $("#persen_rend_cima");
+  var lbl_persen_rend_bcn = $("#persen_rend_bcn");
+  //-----------------------------------------
   var lbl_ton_tebu_ditebang_buma = $("#ton_tebu_ditebang_buma");
   var lbl_ton_tebu_ditebang_cima = $("#ton_tebu_ditebang_cima");
   var lbl_ton_tebu_ditebang_bcn = $("#ton_tebu_ditebang_bcn");
@@ -53,6 +57,10 @@
   var lbl_gmt_cima = $("#gmt_cima");
   var lbl_gmt_bcn = $("#gmt_bcn");
   //-----------------------------------------
+  var lbl_rend_buma = $("#rend_buma");
+  var lbl_rend_cima = $("#rend_cima");
+  var lbl_rend_bcn = $("#rend_bcn");
+  //-----------------------------------------
   var pgb_tebu_ditebang_buma = $("#progress_tebu_ditebang_buma");
   var pgb_tebu_ditebang_cima = $("#progress_tebu_ditebang_cima");
   var pgb_tebu_ditebang_bcn = $("#progress_tebu_ditebang_bcn");
@@ -68,6 +76,10 @@
   var pgb_gmt_buma = $("#progress_gmt_buma");
   var pgb_gmt_cima = $("#progress_gmt_cima");
   var pgb_gmt_bcn = $("#progress_gmt_bcn");
+  //-----------------------------------------
+  var pgb_rend_buma = $("#progress_rend_buma");
+  var pgb_rend_cima = $("#progress_rend_cima");
+  var pgb_rend_bcn = $("#progress_rend_bcn");
   //-----------------------------------------
   var arr_data_lhp_buma = [];
   var arr_data_lhp_cima = [];
@@ -154,6 +166,20 @@
     var target_gmt_bcn = target_gmt_buma + target_gmt_cima || 0;
     var persen_gmt_bcn = gmt_bcn/target_gmt_bcn || 0;
 
+    var rend_buma = Number(arr_data_lhp_buma.rend_total_sd) || 0;
+    var target_rend_buma = Number(arr_target_buma.rend_rataan) || 0;
+    var persen_rend_buma = rend_buma/target_rend_buma || 0;
+    var rend_cima = Number(arr_data_lhp_cima.rend_total_sd) || 0;
+    var target_rend_cima = Number(arr_target_cima.rend_rataan) || 0;
+    var persen_rend_cima = rend_cima/target_rend_cima || 0;
+    var hablur_buma = Number(arr_data_lhp_buma.kristal_total_sd) || 0;
+    var hablur_cima = Number(arr_data_lhp_cima.kristal_total_sd) || 0;
+    var rend_bcn = ((hablur_buma + hablur_cima)/ton_giling_total_bcn)*100 || 0;
+    var target_hablur_buma = Number(arr_target_buma.hablur_total) || 0;
+    var target_hablur_cima = Number(arr_target_cima.hablur_total) || 0;
+    var target_rend_bcn = ((target_hablur_buma + target_hablur_cima)/(target_tebu_digiling_buma + target_tebu_digiling_cima))*100 || 0;
+    var persen_rend_bcn = rend_bcn/target_rend_bcn || 0;
+
     //====== BUMA ===============
     lbl_persen_tebu_ditebang_buma.text(formatting.format(
       persen_tebu_digiling_buma * 100) + '%');
@@ -176,6 +202,11 @@
     lbl_gmt_buma.text(formatting.format(gmt_buma) + ' ton dari ' + formatting.format(target_gmt_buma) + ' ton');
     pgb_gmt_buma.css('width', persen_gmt_buma*100 + '%').attr('aria_valuenow', persen_gmt_buma*100);
     pgb_gmt_buma.css('background-color', "hsl(" + (persen_gmt_buma*150) + ",50%,50%)");
+
+    lbl_persen_rend_buma.text(formatting.format(persen_rend_buma * 100) + '%');
+    lbl_rend_buma.text(formatting.format(rend_buma) + ' dari ' + formatting.format(target_rend_buma) + '');
+    pgb_rend_buma.css('width', persen_rend_buma*100 + '%').attr('aria_valuenow', persen_rend_buma*100);
+    pgb_rend_buma.css('background-color', "hsl(" + (persen_rend_buma*150) + ",50%,50%)");
     //===========================
     //====== CIMA ===============
     lbl_persen_tebu_ditebang_cima.text(formatting.format(
@@ -195,9 +226,14 @@
     pgb_gmpg_cima.css('background-color', "hsl(" + (persen_gmpg_cima*150) + ",50%,50%)");
 
     lbl_persen_gmt_cima.text(formatting.format(persen_gmt_cima * 100) + '%');
-    lbl_gmt_cima.text(formatting.format(gmt_cima) + ' ton dari ' + formatting.format(target_gmt_cima) + ' ton');
+    lbl_gmt_cima.text(formatting.format(gmt_cima) + ' % dari ' + formatting.format(target_gmt_cima) + ' %');
     pgb_gmt_cima.css('width', persen_gmt_cima*100 + '%').attr('aria_valuenow', persen_gmt_cima*100);
     pgb_gmt_cima.css('background-color', "hsl(" + (persen_gmt_cima*150) + ",50%,50%)");
+
+    lbl_persen_rend_cima.text(formatting.format(persen_rend_cima * 100) + '%');
+    lbl_rend_cima.text(formatting.format(rend_cima) + ' dari ' + formatting.format(target_rend_cima) + '');
+    pgb_rend_cima.css('width', persen_rend_cima*100 + '%').attr('aria_valuenow', persen_rend_cima*100);
+    pgb_rend_cima.css('background-color', "hsl(" + (persen_rend_cima*150) + ",50%,50%)");
     //===========================
     //====== BCN ================
     lbl_persen_tebu_ditebang_bcn.text(formatting.format(
@@ -218,6 +254,10 @@
     lbl_gmt_bcn.text(formatting.format(gmt_bcn) + ' ton dari ' + formatting.format(target_gmt_bcn) + ' ton');
     pgb_gmt_bcn.css('width', persen_gmt_bcn*100 + '%').attr('aria_valuenow', persen_gmt_bcn*100);
     pgb_gmt_bcn.css('background-color', "hsl(" + (persen_gmt_bcn*150) + ",50%,50%)");
+    lbl_persen_rend_bcn.text(formatting.format(persen_rend_bcn * 100) + '%');
+    lbl_rend_bcn.text(formatting.format(rend_bcn) + ' dari ' + formatting.format(target_rend_bcn) + '');
+    pgb_rend_bcn.css('width', persen_rend_bcn*100 + '%').attr('aria_valuenow', persen_rend_bcn*100);
+    pgb_rend_bcn.css('background-color', "hsl(" + (persen_rend_bcn*150) + ",50%,50%)");
     //===========================
     //=========================================================
 
