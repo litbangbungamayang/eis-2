@@ -75,24 +75,30 @@
     }
   }
 
-  function refreshData(){
+  function fetchData(){
     var url = "C_dashboard/getDataLastLhp?pg=buma";
     $.getJSON(url, function(response){
       arr_data_lhp_buma = response[0];
+      refreshData();
     })
     url = "C_dashboard/getDataLastLhp?pg=cima";
     $.getJSON(url, function(response){
       arr_data_lhp_cima = response[0];
+      refreshData();
     })
     url = "C_kinerja/getTargetKinerja?kat=takmar&pg=buma";
     $.getJSON(url, function(response){
       arr_target_buma = response[0];
+      refreshData();
     })
     url = "C_kinerja/getTargetKinerja?kat=takmar&pg=cima";
     $.getJSON(url, function(response){
       arr_target_cima = response[0];
+      refreshData();
     })
+  }
 
+  function refreshData(){
     //================ UPDATING INDICATORS ====================
     var ton_giling_total_buma = Number(arr_data_lhp_buma.ton_giling_total_sd) || 0;
     var ton_giling_total_cima = Number(arr_data_lhp_cima.ton_giling_total_sd) || 0;
@@ -182,7 +188,7 @@
   }
 
   function defaultLoad(){
-    setInterval(function(){ refreshData() }, 5000);
+    //setInterval(function(){ refreshData() }, 5000);
+    fetchData();
   }
-  refreshData();
 </script>
