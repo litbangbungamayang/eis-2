@@ -14,4 +14,8 @@
 <!-- Tabler Core -->
 <script src="public/tabler/js/tabler.min.js"></script>
 <!-- JQuery -->
+<script src="public/jquery/jquery-3.6.0.min.js"></script>
+<!-- Selectize -->
+<script src="public/selectize/js/standalone/selectize.js"></script>
+<link href="public/selectize/css/selectize.css" rel="stylesheet"/>
 <!------------------------------------------------------------->

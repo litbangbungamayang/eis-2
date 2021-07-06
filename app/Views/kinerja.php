@@ -20,6 +20,16 @@
           </div>
         </div>
       </div>
+      <div class="row row-deck row-cards">
+        <div class="col-sm-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="page-pretitle">Realisasi terhadap </div>
+              <select class="custom-control custom-select" id="sel_target"></select>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="page-body">
       <div class="container-xl">

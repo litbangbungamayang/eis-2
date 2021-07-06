@@ -21,6 +21,9 @@
 
 
   //------- VARIABLES DECLARATION ---------//
+
+  var cbx_target = $("#sel_target");
+  //----------------------------------------
   var lbl_persen_tebu_ditebang_buma = $("#persen_tebu_ditebang_buma");
   var lbl_persen_tebu_ditebang_cima = $("#persen_tebu_ditebang_cima");
   var lbl_persen_tebu_ditebang_bcn = $("#persen_tebu_ditebang_bcn");
@@ -99,7 +102,7 @@
     }
   }
 
-  function fetchData(){
+  function fetchData(target){
     var url = "C_dashboard/getDataLastLhp?pg=buma";
     $.getJSON(url, function(response){
       arr_data_lhp_buma = response[0];
@@ -110,12 +113,12 @@
       arr_data_lhp_cima = response[0];
       refreshData();
     })
-    url = "C_kinerja/getTargetKinerja?kat=takmar&pg=buma";
+    url = "C_kinerja/getTargetKinerja?kat=" + target + "&pg=buma";
     $.getJSON(url, function(response){
       arr_target_buma = response[0];
       refreshData();
     })
-    url = "C_kinerja/getTargetKinerja?kat=takmar&pg=cima";
+    url = "C_kinerja/getTargetKinerja?kat=" + target + "&pg=cima";
     $.getJSON(url, function(response){
       arr_target_cima = response[0];
       refreshData();
@@ -263,8 +266,22 @@
 
   }
 
+  function initializeComboTarget(){
+    cbx_target.selectize({
+      create: false,
+      sortField: "text",
+      onChange: function(value){
+        fetchData(value);
+      }
+    });
+    cbx_target[0].selectize.addOption({value: 'rkap', text: 'RKAP'});
+    cbx_target[0].selectize.addOption({value: 'takmar', text: 'Taksasi Maret'});
+    cbx_target[0].selectize.setValue('takmar',false);
+  }
+
   function defaultLoad(){
     //setInterval(function(){ refreshData() }, 5000);
-    fetchData();
+    fetchData('takmar');
+    initializeComboTarget();
   }
 </script>
