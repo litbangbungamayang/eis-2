@@ -42,7 +42,10 @@ var grafik_options = {
     },
     stacked: false,
     zoom: {
-      enabled: false
+      enabled: true
+    },
+    toolbar: {
+      show: true
     }
   },
   stroke: {
@@ -99,7 +102,7 @@ var grafik_options = {
     axisBorder: {
       show: false,
     },
-    type: 'string',
+    type: 'datetime',
   },
   noData: {
     text: "Tidak ada data"
