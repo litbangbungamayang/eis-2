@@ -4,48 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class M_Dashboard extends Model{
+class M_Trendline extends Model{
 
   private $buma_env = "http://simpgbuma.ptpn7.com/index.php/api_bcn/";
   private $cima_env = "http://simpgcima.ptpn7.com/index.php/api_bcn/";
   private $lokal = "http://localhost/simpgbuma/api_bcn/";
-
-  public function getDataGrafik1($postData){
-    $server_pg = null;
-    $pg = $postData['pg'];
-    switch($pg){
-      case "buma":
-        $server_pg = $this->buma_env;
-        break;
-      case "cima":
-        $server_pg = $this->cima_env;
-        break;
-      case "lokal":
-        $server_pg = $this->lokal;
-        break;
-    }
-    $req_fields = array(
-      'jenis_data' => ($postData['field']),
-      'tgl_awal' => $postData['tgl_awal'],
-      'tgl_akhir' => $postData['tgl_akhir']
-    );
-    $req_fields_string = http_build_query($req_fields);
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => $server_pg."getDataTimeSeries",
-      CURLOPT_POST => 1,
-      CURLOPT_POSTFIELDS => $req_fields_string,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_HTTPHEADER => array(
-        'cache-control: no-cache'
-      )
-    ));
-    $response = curl_exec($curl);
-    curl_close($curl);
-    return $response;
-  }
 
   public function getDataDashboard($pg){
     $server_pg = null;

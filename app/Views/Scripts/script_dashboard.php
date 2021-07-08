@@ -223,8 +223,8 @@
       tebu_masuk_hi_buma.text(formatting.format(parseFloat(response[0].tebu_masuk_hi)));
       tebu_giling_hi_buma.text(formatting.format(parseFloat(response[0].tebu_giling_hi)));
       tebu_giling_sd_buma.text(formatting.format(parseFloat(+response[0].tebu_giling).toFixed(2)));
-      protas_hi_buma.text(formatting.format(+tebu_masuk_ts_kemarin_buma/+ha_tebang_ts_kemarin_buma));
-      protas_sd_buma.text(formatting.format(+tebu_masuk_ts_sd_kemarin_buma/+ha_tebang_ts_sd_kemarin_buma));
+      protas_hi_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts)/Number(arr_data_lhp_buma.ha_giling_ts)));
+      protas_sd_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd)));
       stok_buma.text(formatting.format(+ton_masuk_sd-+ton_giling_sd));
       //console.log(response[0].tebu_giling_hi);
     })
@@ -383,8 +383,8 @@
       tebu_masuk_hi_cima.text(formatting.format(parseFloat(response[0].tebu_masuk_hi)));
       tebu_giling_hi_cima.text(formatting.format(parseFloat(response[0].tebu_giling_hi)));
       tebu_giling_sd_cima.text(formatting.format(parseFloat(response[0].tebu_giling)));
-      protas_hi_cima.text(formatting.format(tebu_masuk_ts_kemarin_cima/ha_tebang_ts_kemarin_cima));
-      protas_sd_cima.text(formatting.format(tebu_masuk_ts_sd_kemarin_cima/ha_tebang_ts_sd_kemarin_cima));
+      protas_hi_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts)/Number(arr_data_lhp_cima.ha_giling_ts)));
+      protas_sd_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd)));
       stok_cima.text(formatting.format(ton_masuk_sd-ton_giling_sd));
     })
     var url_3 = js_base_url + "C_dashboard/getLastLhp?pg=cima";
@@ -548,8 +548,12 @@
     tebu_giling_sd_bcn.text(formatting.format(ton_giling_sd_bcn));
     txt_gula_hi_bcn.text(formatting.format(gula_produksi_hi_bcn));
     txt_gula_sd_bcn.text(formatting.format(gula_produksi_sd_bcn));
-    protas_hi_bcn.text(formatting.format(tebu_masuk_ts_kemarin/ha_tebang_ts_kemarin));
-    protas_sd_bcn.text(formatting.format(tebu_masuk_ts_sd_kemarin/ha_tebang_ts_sd_kemarin));
+    //protas_hi_bcn.text(formatting.format(tebu_masuk_ts_kemarin/ha_tebang_ts_kemarin));
+    //protas_sd_bcn.text(formatting.format(tebu_masuk_ts_sd_kemarin/ha_tebang_ts_sd_kemarin));
+    protas_hi_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts)+Number(arr_data_lhp_cima.ton_giling_ts))/
+      (Number(arr_data_lhp_buma.ha_giling_ts)+Number(arr_data_lhp_cima.ha_giling_ts))));
+    protas_sd_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts_sd)+Number(arr_data_lhp_cima.ton_giling_ts_sd))/
+      (Number(arr_data_lhp_buma.ha_giling_ts_sd)+Number(arr_data_lhp_cima.ha_giling_ts_sd))));
     //------------------------------------------------------
     grafik_bcn.updateSeries([
       {
