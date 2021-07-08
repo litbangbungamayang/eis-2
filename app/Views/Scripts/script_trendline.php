@@ -30,7 +30,7 @@ var label_grafik = [];
 var grafik_options = {
   chart: {
     id: "hourly-cima-id",
-    type: "area",
+    type: "line",
     fontFamily: 'inherit',
     height: 250,
     parentHeightOffset: 0,
@@ -46,7 +46,8 @@ var grafik_options = {
     }
   },
   stroke: {
-    width: 2
+    width: 2,
+    curve: 'smooth'
   },
   plotOptions: {
     bar: {
