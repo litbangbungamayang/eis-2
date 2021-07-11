@@ -46,7 +46,6 @@ var label_grafik_2 = [];
 //=====================================
 
 //==== GRAPH OPTIONS ==================
-
 var grafik_options = {
   chart: {
     type: "line",
@@ -142,194 +141,6 @@ var grafik_options = {
     show: true,
   }
 };
-
-var options_grafik_1 = {
-  chart: {
-    type: 'line',
-    group: 'kinerja',
-    id: 'grafik_1',
-    fontFamily: 'inherit',
-    height: 250,
-    parentHeightOffset: 0,
-    animations: {
-      enabled: false
-    },
-    stacked: false,
-    zoom: {
-      enabled: true
-    },
-    toolbar: {
-      show: true
-    }
-  },
-  stroke: {
-    width: 2,
-    curve: 'smooth'
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '50%',
-    }
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  fill: {
-    opacity: 0.8,
-  },
-  series: [
-    {
-      name: "1",
-      data: []
-    }
-  ],
-  grid: {
-    padding: {
-      top: -20,
-      right: 0,
-      left: -4,
-      bottom: -4
-    },
-    strokeDashArray: 4,
-    xaxis: {
-      lines: {
-        show: true
-      }
-    },
-  },
-  markers: {
-    size: 5,
-    hover: {
-      size: 8
-    }
-  },
-  xaxis: {
-    labels: {
-      padding: 0,
-      style: {
-        fontSize: '10px'
-      }
-    },
-    tooltip: {
-      enabled: false
-    },
-    axisBorder: {
-      show: false,
-    },
-    type: 'datetime',
-  },
-  noData: {
-    text: "Tidak ada data"
-  },
-  yaxis: [
-    {
-      labels: {
-        minWidth: 40
-      }
-    },{
-      opposite: true,
-      min: 0,
-      max: 600,
-      forceNiceScale: true
-    }
-  ],
-  labels: ['06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','00','01','02','03','04','05'],
-  //colors: ["#69c41f", "#206bc4", "#206bc4",''],
-  legend: {
-    show: true,
-  }
-};
-
-var options_grafik_2 = {
-  chart: {
-    type: 'line',
-    group: 'kinerja',
-    id: 'grafik_2',
-    fontFamily: 'inherit',
-    height: 250,
-    parentHeightOffset: 0,
-    animations: {
-      enabled: false
-    },
-    stacked: false,
-    zoom: {
-      enabled: true
-    },
-    toolbar: {
-      show: false,
-      offsetY: -130,
-      offsetX: 200
-    }
-  },
-  stroke: {
-    width: 2,
-    curve: 'smooth'
-  },
-  plotOptions: {
-    bar: {
-      columnWidth: '50%',
-    }
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  fill: {
-    opacity: 0.8,
-  },
-  series: [
-    {
-      name: "1",
-      data: []
-    }
-  ],
-  grid: {
-    strokeDashArray: 4,
-    xaxis: {
-      lines: {
-        show: true
-      }
-    },
-  },
-  markers: {
-    size: 5,
-    hover: {
-      size: 8
-    }
-  },
-  xaxis: {
-    labels: {
-      padding: 0,
-      style: {
-        fontSize: '10px'
-      }
-    },
-    tooltip: {
-      enabled: false
-    },
-    axisBorder: {
-      show: false,
-    },
-    type: 'datetime',
-  },
-  noData: {
-    text: "Tidak ada data"
-  },
-  yaxis: [
-    {
-      labels: {
-        minWidth: 40
-      }
-    }
-  ],
-  labels: ['06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','00','01','02','03','04','05'],
-  //colors: ["#69c41f", "#206bc4", "#206bc4",''],
-  legend: {
-    show: true,
-  }
-};
-
-
-
 //=====================================
 
 function initCbxJenisData(){
@@ -530,10 +341,170 @@ function getDataGrafik1(){
   })
 }
 
+function showGrafik(){
+  var tgl = new Date();
+  var baris_data = [];
+  var arr_data_grafik_1 = [];
+  var arr_data_grafik_2 = [];
+  var arr_data_grafik_3 = [];
+  var y_grafik_1 = [];
+  var y_grafik_2 = [];
+  var y_grafik_3 = [];
+  $.ajax({
+    url: js_base_url + "C_trendline/getDataGrafik1",
+    type: "POST",
+    dataType: "json",
+    data:{
+      field: jenis_data_terpilih_1, //TODO kayaknya nggak kepake
+      pg: cbx_pg.val(), //TODO ganti ke combo box
+      tgl_awal: dtp_tgl_awal.val(),
+      tgl_akhir: dtp_tgl_akhir.val()
+    },
+    success: function(data){
+      //============== baris data grafik 1
+      for(var i = 0; i < jenis_data.length; i++){
+        baris_data = []; // ===> pasang disini untuk reset array
+        for(var j = 0; j < data.length; j++){
+          tgl = Date.parse(data[j].tgl_giling);
+          label_grafik[j] = tgl;
+          for(var nama_kolom in data[j]){
+            if(nama_kolom === jenis_data[i].value){
+              baris_data[j] = data[j][nama_kolom];
+            }
+          }
+        }
+        arr_data_grafik_1[i] = {
+          name: jenis_data[i].text,
+          type: ((jenis_data[i].value == 'sisa_tebu') ? 'column' : 'line'),
+          data: baris_data
+        }
+        if(jenis_data[i].value === 'gula_produksi'){
+          y_grafik_1[i] = {
+            seriesName: jenis_data[i].text,
+            opposite: true,
+            title: {
+              text: 'Produksi Gula (ton)'
+            }
+          }
+        } else {
+          if(jenis_data[i].value === 'ton_tebang_total'){
+            y_grafik_1[i] = {
+              seriesName: 'Tebu Ditebang',
+              min: 0,
+              max: 8000,
+              forceNiceScale: true,
+              show: true
+            };
+          } else {
+            y_grafik_1[i] = {
+              seriesName: 'Tebu Ditebang',
+              forceNiceScale: true,
+              show: false
+            }
+          }
+        }
+      }
+      //==================================
+      //=============== baris data grafik 2
+      for(var i = 0; i < jenis_data_2.length; i++){
+        baris_data = []; // ====> pasang disini untuk reset array
+        for(var j = 0; j < data.length; j++){
+          for(var nama_kolom in data[j]){
+            if(nama_kolom === jenis_data_2[i].value){
+              baris_data[j] = data[j][nama_kolom];
+            }
+          }
+        }
+        arr_data_grafik_2[i] = {
+          name: jenis_data_2[i].text,
+          type: ((jenis_data_2[i].value === 'pol_tebu' || jenis_data_2[i].value === 'rend_total') ? 'column' : 'line'),
+          data: baris_data
+        }
+        if(jenis_data_2[i].value === 'pol_tebu' || jenis_data_2[i].value === 'rend_total'){
+          y_grafik_2[i] = {
+            seriesName: 'Pol Tebu',
+            opposite: true,
+            show: ((jenis_data_2[i].value === 'pol_tebu') ? true : false),
+            title: {
+              text: '% rendemen & % pol'
+            }
+          }
+        } else {
+          y_grafik_2[i] = {
+            seriesName: 'HPG',
+            show: ((jenis_data_2[i].value === 'ef_me') ? true : false)
+          }
+        }
+      }
+      //==================================
+      //=============== baris data grafik 3
+      for(var i = 0; i < jenis_data_3.length; i++){
+        baris_data = []; // ====> pasang disini untuk reset array
+        for(var j = 0; j < data.length; j++){
+          for(var nama_kolom in data[j]){
+            if(nama_kolom === jenis_data_3[i].value){
+              baris_data[j] = data[j][nama_kolom];
+            }
+          }
+        }
+        arr_data_grafik_3[i] = {
+          name: jenis_data_3[i].text,
+          type: 'line',
+          data: baris_data
+        }
+        if(jenis_data_3[i].value === 'persen_pol_tetes'){
+          y_grafik_3[i] = {
+            seriesName: 'Pol Tetes',
+            opposite: true,
+            show: true,
+            title: {
+              text: '% pol tetes'
+            }
+          }
+        } else {
+          y_grafik_3[i] = {
+            seriesName: 'Pol Ampas',
+            show: ((jenis_data_3[i].value === 'persen_pol_ampas') ? true : false)
+          }
+        }
+      }
+      //==================================
+      var grafik_1 = new ApexCharts(document.querySelector("#grafik_1"),
+          grafik_options
+        );
+      var grafik_2 = new ApexCharts(document.querySelector("#grafik_2"),
+          grafik_options
+        );
+      var grafik_3 = new ApexCharts(document.querySelector("#grafik_3"),
+          grafik_options
+        );
+      grafik_1.render();
+      grafik_2.render();
+      grafik_3.render();
+      grafik_1.updateSeries(arr_data_grafik_1);
+      grafik_2.updateSeries(arr_data_grafik_2);
+      grafik_3.updateSeries(arr_data_grafik_3);
+      grafik_1.updateOptions({
+        labels: label_grafik,
+        yaxis: y_grafik_1
+      });
+      grafik_2.updateOptions({
+        labels: label_grafik,
+        yaxis: y_grafik_2
+      });
+      grafik_3.updateOptions({
+        labels: label_grafik,
+        yaxis: y_grafik_3
+      });
+    }
+  })
+}
+
 btn_tes.on("click", function(){
   //console.log(cbx_jenis_data[0].selectize.items);
   //cekAjax();
-  getDataGrafik1();
+  //getDataGrafik1();
+  showGrafik();
 })
 
 function defaultLoad(){

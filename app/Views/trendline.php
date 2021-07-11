@@ -31,12 +31,12 @@
                       <div class="">Pabrik gula: <select id="sel_pg"></select></div>
                     </div>
                   </div>
-                  <div class="row" style="">
+                  <div class="row" style="display:none">
                     <div class="col-lg-6">
                       <div class="">Pilihan data grafik 1: <input type="text" class="custom-control custom-select" id="sel_jenis_data"></input></div>
                     </div>
                   </div>
-                  <div class="row" style="">
+                  <div class="row" style="display:none">
                     <div class="col-lg-6">
                       <div class="">Pilihan data grafik 2: <input type="text" class="custom-control custom-select" id="sel_jenis_data_2"></input></div>
                     </div>
@@ -78,6 +78,17 @@
               <div class="card">
                 <div class="card-body">
                   <div id="grafik_2" class="chart-lg"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+          <div class="row row-cards">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <div id="grafik_3" class="chart-lg"></div>
                 </div>
               </div>
             </div>
