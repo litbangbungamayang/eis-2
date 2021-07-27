@@ -23,3 +23,6 @@ class C_kinerja extends BaseController
 		echo $this->model_dashboard->getTargetKinerja($kategori, $pg);
 	}
 }
+
+
+?>

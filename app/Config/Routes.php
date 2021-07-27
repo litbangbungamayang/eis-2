@@ -35,6 +35,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/kinerja', 'C_kinerja::index');
 $routes->get('/trendline', 'C_trendline::index');
+$routes->add('detail/buma', 'C_detail::onfarm/buma');
+$routes->add('detail/cima', 'C_detail::onfarm/cima');
 
 
 /*

@@ -23,6 +23,7 @@
   //------- VARIABLES DECLARATION ---------//
 
   var cbx_target = $("#sel_target");
+  var lbl_keterangan = $("#lbl_keterangan");
   //----------------------------------------
   var lbl_persen_tebu_ditebang_buma = $("#persen_tebu_ditebang_buma");
   var lbl_persen_tebu_ditebang_cima = $("#persen_tebu_ditebang_cima");
@@ -121,11 +122,13 @@
     url = "C_kinerja/getTargetKinerja?kat=" + target + "&pg=cima";
     $.getJSON(url, function(response){
       arr_target_cima = response[0];
+      console.log(arr_target_cima);
       refreshData();
     })
   }
 
   function refreshData(){
+    //alert(arr_target_buma.deskripsi);
     //================ UPDATING INDICATORS ====================
     var ton_giling_total_buma = Number(arr_data_lhp_buma.ton_giling_total_sd) || 0;
     var ton_giling_total_cima = Number(arr_data_lhp_cima.ton_giling_total_sd) || 0;
@@ -182,6 +185,8 @@
     var target_hablur_cima = Number(arr_target_cima.hablur_total) || 0;
     var target_rend_bcn = ((target_hablur_buma + target_hablur_cima)/(target_tebu_digiling_buma + target_tebu_digiling_cima))*100 || 0;
     var persen_rend_bcn = rend_bcn/target_rend_bcn || 0;
+
+    lbl_keterangan.text(arr_target_buma.deskripsi);
 
     //====== BUMA ===============
     lbl_persen_tebu_ditebang_buma.text(formatting.format(

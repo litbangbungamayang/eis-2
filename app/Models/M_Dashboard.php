@@ -10,6 +10,23 @@ class M_Dashboard extends Model{
   private $cima_env = "http://simpgcima.ptpn7.com/index.php/api_bcn/";
   private $lokal = "http://localhost/simpgbuma/api_bcn/";
 
+
+  public function getServer($pg){
+    $server_pg = null;
+    switch($pg){
+      case "buma":
+        $server_pg = $this->buma_env;
+        break;
+      case "cima":
+        $server_pg = $this->cima_env;
+        break;
+      case "lokal":
+        $server_pg = $this->lokal;
+        break;
+    }
+    return $server_pg;
+  }
+
   public function getDataGrafik1($postData){
     $server_pg = null;
     $pg = $postData['pg'];
@@ -64,6 +81,15 @@ class M_Dashboard extends Model{
     return ($this->getCurl($request));
   }
 
+  public function getMulaiGiling($pg){
+    $request = array("db_server"=>$this->getServer($pg), "url"=>"getTbSetting");
+    return ($this->getCurl($request));
+  }
+
+  public function getGilingSeinduk($pg, $tgl_last_lhp){
+    return ($this->getCurl(array("db_server"=>$this->getServer($pg), "url"=>"getGilingSeinduk?tgl_last_lhp=".$tgl_last_lhp)));
+  }
+
   function getCurl($request){
     $db_server = $request["db_server"];
     $url = str_replace(" ", "", $request["url"]);
@@ -109,6 +135,14 @@ class M_Dashboard extends Model{
     $query = "select * from tbl_mon_target where kategori = ? and pg = ? and status = ?";
     $argument = [$kategori, $pg, 1];
     return json_encode($this->db->query($query, $argument)->getResult());
+  }
+
+  function getDataTarget($arg){
+    $query =
+    "select * from tbl_mon_target montar
+      join tbl_mon_tsi tsi on tsi.id_target = montar.id
+    where montar.pg = ? and montar.kategori = ? and montar.revisi = ?";
+    return json_encode($this->db->query($query, $arg)->getResult());
   }
 
 }
