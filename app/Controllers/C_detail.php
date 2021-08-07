@@ -32,21 +32,21 @@ class C_detail extends BaseController
 	public function getDataRkap(){
 		$pg = $this->request->getGet('pg');
 		$this->model_dashboard = model("M_Dashboard");
-		$arg = [$pg, 'rkap', '0'];
+		$arg = [$pg, 'rkap', '0', '0']; //PG; Kategori; Revisi; Status
 		echo $this->model_dashboard->getDataTarget($arg);
 	}
 
 	public function getDataTakmar(){
 		$pg = $this->request->getGet('pg');
 		$this->model_dashboard = model("M_Dashboard");
-		$arg = [$pg, 'takmar', '0'];
+		$arg = [$pg, 'takmar', '0', '1'];
 		echo $this->model_dashboard->getDataTarget($arg);
 	}
 
 	public function getDataRkapp(){
 		$pg = $this->request->getGet('pg');
 		$this->model_dashboard = model("M_Dashboard");
-		$arg = [$pg, 'rkap', '1'];
+		$arg = [$pg, 'rkap', '2', '1'];
 		echo $this->model_dashboard->getDataTarget($arg);
 	}
 
