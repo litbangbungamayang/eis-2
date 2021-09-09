@@ -281,6 +281,7 @@
     });
     cbx_target[0].selectize.addOption({value: 'rkap', text: 'RKAP'});
     cbx_target[0].selectize.addOption({value: 'takmar', text: 'Taksasi Maret'});
+    cbx_target[0].selectize.addOption({value: 'prognosa', text: 'Prognosa'});
     cbx_target[0].selectize.setValue('takmar',false);
   }
 

@@ -31,6 +31,7 @@
   var target_rkap;
   var target_takmar;
   var target_rkapp;
+  var target_prognosa;
   var v_tgl_giling;
   var tgl_akhir_giling;
   var sisa_hari_giling;
@@ -83,6 +84,14 @@
     })
   }
 
+  function getDataPrognosa(){
+    var url = js_base_url + "C_detail/getDataPrognosa?pg=" + pg;
+    $.getJSON(url, function(response){
+      target_prognosa = response;
+      console.log(target_prognosa);
+    })
+  }
+
   function fetchData(){
     tgl_akhir_giling = new Date(dtp_akhir_giling.val());
     sisa_hari_giling = (Math.floor((tgl_akhir_giling - new Date(tgl_last_lhp)) / (1000*60*60*24)));
@@ -96,6 +105,7 @@
       <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_ts) - tebu_ts)/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_ts) - tebu_ts)/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_ts) - tebu_ts)/sisa_hari_giling) + `</td>
+      <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_ts) - tebu_ts)/sisa_hari_giling) + `</td>
       <th></th>
     <tr>
     `;
@@ -110,6 +120,7 @@
             <td style="text-align:right;">` + formatting.format((Number(target_rkap[index].tebu_digiling) - tebu_tsi[index].ton)/sisa_hari_giling) + `</td>
             <td style="text-align:right;">` + formatting.format((Number(target_takmar[index].tebu_digiling) - tebu_tsi[index].ton)/sisa_hari_giling) + `</td>
             <td style="text-align:right;">` + formatting.format((Number(target_rkapp[index].tebu_digiling) - tebu_tsi[index].ton)/sisa_hari_giling) + `</td>
+            <td style="text-align:right;">` + formatting.format((Number(target_prognosa[index].tebu_digiling) - tebu_tsi[index].ton)/sisa_hari_giling) + `</td>
             <th></th>
           <tr>
         `;
@@ -124,6 +135,7 @@
         <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_ts) + (Number(target_rkap[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
         <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_ts) + (Number(target_takmar[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
         <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
+        <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
         <th></th>
       <tr>
       `;
@@ -137,6 +149,7 @@
       <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_tr) - tebu_tr)/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_tr) - tebu_tr)/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_tr) - tebu_tr)/sisa_hari_giling) + `</td>
+      <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_tr) - tebu_tr)/sisa_hari_giling) + `</td>
       <th></th>
     <tr>
     `;
@@ -148,6 +161,7 @@
       <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_total) - (tebu_tr + tebu_ts + tebu_tsi_jml))/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_total) - (tebu_tr + tebu_ts + tebu_tsi_jml))/sisa_hari_giling) + `</td>
       <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_total) - (tebu_tr + tebu_ts + tebu_tsi_jml))/sisa_hari_giling) + `</td>
+      <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_total) - (tebu_tr + tebu_ts + tebu_tsi_jml))/sisa_hari_giling) + `</td>
       <th></th>
     <tr>
     `;
@@ -170,5 +184,6 @@
     getDataRkap();
     getDataRkapp();
     getDataTakmar();
+    getDataPrognosa();
   }
 </script>

@@ -20,7 +20,7 @@ class C_kinerja extends BaseController
 		$kategori = $this->request->getGet('kat');
 		$pg = $this->request->getGet('pg');
 		$this->model_dashboard = model("M_Dashboard");
-		echo $this->model_dashboard->getTargetKinerja($kategori, $pg);
+		echo ($this->model_dashboard->getTargetKinerja($kategori, $pg));
 	}
 }
 

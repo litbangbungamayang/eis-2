@@ -50,6 +50,13 @@ class C_detail extends BaseController
 		echo $this->model_dashboard->getDataTarget($arg);
 	}
 
+	public function getDataPrognosa(){
+		$pg = $this->request->getGet('pg');
+		$this->model_dashboard = model("M_Dashboard");
+		$arg = [$pg, 'prognosa', '0', '1'];
+		echo $this->model_dashboard->getDataTarget($arg);
+	}
+
 }
 
 

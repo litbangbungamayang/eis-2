@@ -48,48 +48,47 @@
       </div>
       <div class="col-lg-12">
         <div class="card card-body">
-          <div class="card-title">Target pasok berdasarkan sisa tebu</div>
+          <div class="card-title" style="margin-bottom:50px">Target pasok berdasarkan sisa tebu</div>
           <div class="row row-deck row-cards">
-            <div class="col-lg-3">
-              <div class="">Awal giling
-                <div class="col-lg-12">
-                  <div id="lbl_mulai_giling"></div>
-                </div>
+            <div class="row">
+              <div class="col-lg-3">
+                  <div class="row"><div>Awal giling</div></div>
+                  <div class="row"><div id="lbl_mulai_giling"></div></div>
               </div>
-            </div>
-            <div class="col-lg-3">
-              <div class="">Rencana akhir giling:
-                <div class="col-lg-12 input-group">
-                  <input type="date" class="form-control" id="dtp_akhir_giling" onchange="fetchData();"></input>
-                </div>
+              <div class="col-lg-3">
+                  <div class="row"><div>Rencana akhir giling</div></div>
+                  <div class="row"><div><input type="date" class="form-control" id="dtp_akhir_giling" onchange="fetchData();"></input></div></div>
               </div>
             </div>
           </div>
-          <div class="row row-cards">
+          <div class="row row-cards" style="margin-top:20px">
             <div class="col-12">
-              <div class="card">
-                <div class="table-responsive">
-                  <table class="table table-vcenter card-table">
-                    <thead>
-                      <tr>
-                        <th class="w-1"></th>
-                        <th></th>
-                        <th></th>
-                        <th colspan = "4" style="text-align:center;">Target pasok per hari thd</th>
-                      </tr>
-                      <tr>
-                        <th class="w-1">No.</th>
-                        <th style="text-align:center;">Kepemilikan</th>
-                        <th style="text-align:center;">Realisasi s.d.</th>
-                        <th style="text-align:center;">RKAP</th>
-                        <th style="text-align:center;">Takmar</th>
-                        <th style="text-align:center;">RKAPP</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataText">
-                    </tbody>
-                  </table>
+              <div class="row">
+                <div class="card">
+                  <div class="table-responsive">
+                    <table class="table table-vcenter card-table">
+                      <thead>
+                        <tr>
+                          <th class="w-1"></th>
+                          <th></th>
+                          <th></th>
+                          <th colspan = "5" style="text-align:center;">Target pasok per hari thd</th>
+                        </tr>
+                        <tr>
+                          <th class="w-1">No.</th>
+                          <th style="text-align:left;">Kepemilikan</th>
+                          <th style="text-align:right;">Realisasi s.d.</th>
+                          <th style="text-align:right;">RKAP</th>
+                          <th style="text-align:right;">Takmar</th>
+                          <th style="text-align:right;">RKAPP</th>
+                          <th style="text-align:right;">Prognosa</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody id="dataText">
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
