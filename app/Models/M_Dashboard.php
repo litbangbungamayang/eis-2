@@ -141,7 +141,7 @@ class M_Dashboard extends Model{
     $query =
     "select * from tbl_mon_target montar
       join tbl_mon_tsi tsi on tsi.id_target = montar.id
-    where montar.pg = ? and montar.kategori = ? and montar.revisi = ? and montar.status = ?";
+    where montar.pg = ? and montar.kategori = ? and montar.revisi = ? and montar.status = ? order by nama_unit_seinduk";
     return json_encode($this->db->query($query, $arg)->getResult());
   }
 
