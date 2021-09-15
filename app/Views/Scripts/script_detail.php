@@ -88,13 +88,18 @@
     var url = js_base_url + "C_detail/getDataPrognosa?pg=" + pg;
     $.getJSON(url, function(response){
       target_prognosa = response;
-      console.log(target_prognosa);
+      //console.log(target_prognosa);
     })
   }
 
   function fetchData(){
     tgl_akhir_giling = new Date(dtp_akhir_giling.val());
     sisa_hari_giling = (Math.floor((tgl_akhir_giling - new Date(tgl_last_lhp)) / (1000*60*60*24)));
+    /*
+    console.log("prognosa s.d. = " + target_prognosa[0].tebu_digiling_ts);
+    console.log("tebu ts s.d. = " + tebu_ts);
+    console.log("sisa hari giling = " + sisa_hari_giling);
+    */
     let urutan = 1;
     let tebu_tsi_jml = 0;
     table_data = `
@@ -132,10 +137,10 @@
         <td></td>
         <td>Jumlah Tebu Sendiri</td>
         <td style="text-align:right;">` + formatting.format(Number(tebu_ts) + Number(tebu_tsi_jml)) + `</td>
-        <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_ts) + (Number(target_rkap[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
-        <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_ts) + (Number(target_takmar[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
-        <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
-        <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - tebu_tsi_jml)/sisa_hari_giling) + `</td>
+        <td style="text-align:right;">` + formatting.format((Number(target_rkap[0].tebu_digiling_ts) + (Number(target_rkap[0].tebu_digiling_tsi)) - (tebu_ts +tebu_tsi_jml))/sisa_hari_giling) + `</td>
+        <td style="text-align:right;">` + formatting.format((Number(target_takmar[0].tebu_digiling_ts) + (Number(target_takmar[0].tebu_digiling_tsi)) - (tebu_ts +tebu_tsi_jml))/sisa_hari_giling) + `</td>
+        <td style="text-align:right;">` + formatting.format((Number(target_rkapp[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - (tebu_ts +tebu_tsi_jml))/sisa_hari_giling) + `</td>
+        <td style="text-align:right;">` + formatting.format((Number(target_prognosa[0].tebu_digiling_ts) + (Number(target_rkapp[0].tebu_digiling_tsi)) - (tebu_ts +tebu_tsi_jml))/sisa_hari_giling) + `</td>
         <th></th>
       <tr>
       `;
