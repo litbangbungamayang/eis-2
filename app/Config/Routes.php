@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/kinerja', 'C_kinerja::index');
+$routes->get('/petak_kebun', 'C_petak_kebun::index');
 $routes->get('/trendline', 'C_trendline::index');
 $routes->add('detail/buma', 'C_detail::onfarm/buma');
 $routes->add('detail/cima', 'C_detail::onfarm/cima');
