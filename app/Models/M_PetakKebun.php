@@ -51,6 +51,19 @@ class M_PetakKebun extends Model{
     return json_encode($this->db->query($query, $arg)->getResult());
   }
 
+  public function getAllPetak($params){
+    $tahun_giling = $params["tahun_giling"];
+    $pg = $params["pg"];
+    $query = "select
+      id_field, ptk.kode_blok, kode_plant, divisi, deskripsi_blok,
+      luas_tanam, periode, status_blok, vart.nama_varietas, ptk.kepemilikan
+      from tbl_petak ptk
+      	join tbl_varietas vart on ptk.kode_varietas = vart.id_varietas
+      where ptk.mature=? and kode_plant like ?";
+    $arg = [$tahun_giling, "%".$pg."%"];
+    return json_encode($this->db->query($query, $arg)->getResult());
+  }
+
   function getCurl($request){
     $db_server = $request["db_server"];
     $url = str_replace(" ", "", $request["url"]);

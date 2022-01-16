@@ -9,6 +9,10 @@ class C_petak_kebun extends BaseController
 		return view('petak_kebun');
 	}
 
+	public function overview(){
+		return view('onfarm_overview');
+	}
+
 	public function getDataLuas(){
 		$this->model_petakKebun = model("M_PetakKebun");
 		$pg = $this->request->getGet("pg");
@@ -38,6 +42,18 @@ class C_petak_kebun extends BaseController
 		);
 		echo $this->model_petakKebun->getUnit($params);
 	}
+
+	public function getAllPetak(){
+		$this->model_petakKebun = model("M_PetakKebun");
+		$pg = $this->request->getGet("pg");
+		$tahun_giling = $this->request->getGet("tahun_giling");
+		$params = array(
+			"pg" => $pg,
+			"tahun_giling" => $tahun_giling
+		);
+		echo $this->model_petakKebun->getAllPetak($params);
+	}
+
 }
 
 

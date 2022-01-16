@@ -22,64 +22,43 @@
 
   //------- VARIABLES DECLARATION ---------//
 
-  var arrUnit = [];
-  var luas_ts_buma = 0.0;
-  var luas_ts_cima = 0.0;
-  var luas_tr_buma = 0.0;
-  var luas_tr_cima = 0.0;
-  var luas_tsi_buma = 0.0;
-  var luas_tsi_cima = 0.0;
+  $("#tblPetak").DataTable({
+    bFilter: true,
+    bPaginate: true,
+    bSort: false,
+    bInfo: false,
+    select: true,
+    dom: '<"row"<"labelTahunGiling"><"cbxTahunGiling">f>t<"spacer">pl',
+    ajax: {
+      url: js_base_url + "C_petak_kebun/getAllPetak?tahun_giling=2022&pg=7TK",
+      dataSrc: ""
+    },
+    columns : [
+      {
+        data: "no",
+        render: function(data, type, row, meta){
+          return meta.row + 1;
+        }
+      },
+      {data: "deskripsi_blok"},
+      {data: "luas_tanam"},
+      {data: "nama_varietas"}
+    ]
+  })
 
-  var lbl_luas_ts_buma = $("#luas_ts_buma");
-  var lbl_luas_ts_cima = $("#luas_ts_cima");
-  var lbl_luas_ts_bcn = $("#luas_ts_bcn");
-
-  var lbl_luas_tr_buma = $("#luas_tr_buma");
-  var lbl_luas_tr_cima = $("#luas_tr_cima");
-  var lbl_luas_tr_bcn = $("#luas_tr_bcn");
-
-  var lbl_luas_tsi_buma = $("#luas_tsi_buma");
-  var lbl_luas_tsi_cima = $("#luas_tsi_cima");
-  var lbl_luas_tsi_bcn = $("#luas_tsi_bcn");
-
-  var lbl_luas_total_buma = $("#luas_total_buma");
-  var lbl_luas_total_cima = $("#luas_total_cima");
-  var lbl_luas_total_bcn = $("#luas_total_bcn");
 
   //---------------------------------------//
 
   function fetchData(){
-    let tahun_now = new Date().getFullYear();
-    $.getJSON("C_petak_kebun/getGroupingLuas?tahun_giling=" + tahun_now, function(response){
-      arrUnit = response;
+    /*
+    $.getJSON("C_petak_kebun/getAllPetak?tahun_giling=2022&pg=7TK", function(response){
+      console.log(response);
       refreshData();
     })
+    */
   }
 
   function refreshData(){
-    luas_ts_buma = Number(arrUnit.filter(val => val.kode_plant === "7TK1" && val.kepemilikan === "TS-HG")[0].luas) || 0;
-    luas_ts_cima = Number(arrUnit.filter(val => val.kode_plant === "7TK2" && val.kepemilikan === "TS-HG")[0].luas) || 0;
-    luas_tr_buma = Number(arrUnit.filter(val => val.kode_plant === "7TK1" && val.kepemilikan === "TR-KR")[0].luas) || 0;
-    luas_tr_cima = Number(arrUnit.filter(val => val.kode_plant === "7TK2" && val.kepemilikan === "TR-KR")[0].luas) || 0;
-    luas_tsi_buma = Number(arrUnit.filter(val => val.kode_plant === "7TK1" && val.kepemilikan === "TS-IP")[0].luas) || 0;
-
-    //---- UPDATING INDICATORS -----------//
-    lbl_luas_ts_buma.text(formatting.format(luas_ts_buma) + " ha");
-    lbl_luas_ts_cima.text(formatting.format(luas_ts_cima) + " ha");
-    lbl_luas_ts_bcn.text(formatting.format(luas_ts_buma + luas_ts_cima) + " ha");
-
-    lbl_luas_tr_buma.text(formatting.format(luas_tr_buma) + " ha");
-    lbl_luas_tr_cima.text(formatting.format(luas_tr_cima) + " ha");
-    lbl_luas_tr_bcn.text(formatting.format(luas_tr_buma + luas_tr_cima) + " ha");
-
-    lbl_luas_tsi_buma.text(formatting.format(luas_tsi_buma) + " ha");
-    lbl_luas_tsi_cima.text(formatting.format(luas_tsi_cima) + " ha");
-    lbl_luas_tsi_bcn.text(formatting.format(luas_tsi_buma + luas_tsi_cima) + " ha");
-
-    lbl_luas_total_buma.text(formatting.format(luas_ts_buma + luas_tr_buma + luas_tsi_buma) + " ha");
-    lbl_luas_total_cima.text(formatting.format(luas_ts_cima + luas_tr_cima + luas_tsi_cima) + " ha");
-    lbl_luas_total_bcn.text(formatting.format(luas_ts_buma + luas_tr_buma + luas_tsi_buma + luas_ts_cima + luas_tr_cima + luas_tsi_cima) + " ha");
-    //------------------------------------//
 
   }
 
