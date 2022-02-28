@@ -22,6 +22,11 @@
 
   //------- VARIABLES DECLARATION ---------//
 
+  var lbl_deskripsi_blok = $("#lbl_deskripsi_blok");
+  var lbl_kategori = $("#lbl_kategori");
+  var lbl_varietas = $("#lbl_varietas");
+  var lbl_kepemilikan = $("#lbl_kepemilikan");
+
   $("#tblPetak").DataTable({
     bFilter: true,
     bPaginate: true,
@@ -44,6 +49,15 @@
       {data: "luas_tanam"},
       {data: "nama_varietas"}
     ]
+  })
+
+  $("#tblPetak").on("click", "tbody tr", function(){
+    //console.log($("#tblPetak").DataTable().row(this).data());
+    let selectedData = $("#tblPetak").DataTable().row(this).data();
+    lbl_deskripsi_blok.text(selectedData.deskripsi_blok);
+    lbl_kategori.text(selectedData.status_blok);
+    lbl_varietas.text(selectedData.nama_varietas);
+    lbl_kepemilikan.text(selectedData.kepemilikan);
   })
 
 

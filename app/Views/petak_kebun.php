@@ -24,6 +24,25 @@
       <div class="page-body">
         <div class="container-xl">
           <div class="row row-cards">
+            <!-- PREVIEW -->
+            <div class="col-sm-4 col-lg-4">
+                <div class="card card-body sticky-top">
+                    <h3 class="card-title">Detail Petak</h3>
+                    <div class="card-img-top img-responsive img-responsive-16by9" style="background-image: url(./public/assets/profil_petak.jpg)"></div>
+                    <div class="subheader">kepemilikan</div>
+                    <div class="h4 mb-3" id="lbl_kepemilikan">[kepemilikan]</div>
+                    <div class="subheader">Deskripsi</div>
+                    <div class="h4 mb-3" id="lbl_deskripsi_blok">[deskripsi_blok]</div>
+                    <div class="subheader">Kategori</div>
+                    <div class="h4 mb-3" id="lbl_kategori">[kategori]</div>
+                    <div class="subheader">Varietas</div>
+                    <div class="h4 mb-3" id="lbl_varietas">[varietas]</div>
+                    <div class="card-text">
+                      <a href="#" class="btn btn-primary">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
+            <!-- =========================== -->
             <!-- TABEL -->
             <div class="col-sm-12 col-lg-8">
               <div class="card card-body">
@@ -43,13 +62,6 @@
                   </table>
                 </div>
               </div>
-            </div>
-            <!-- =========================== -->
-            <!-- PREVIEW -->
-            <div class="col-sm-4 col-lg-4">
-                <div class="card card-body">
-                    <h3 class="card-title">Atribut Petak</h3>
-                </div>
             </div>
             <!-- =========================== -->
           </div>
