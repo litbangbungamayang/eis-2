@@ -44,7 +44,7 @@
               </div>
             </div>
           </div>
-          <div class="row row-cards">
+          <div class="row row-cards" style="display:none">
             <div class="col-sm-12 col-lg-12">
               <div class="card card-body">
                 <div class="accordion" id="accordion-example">
@@ -94,6 +94,114 @@
                       <div class="accordion-body pt-0">
                         <strong>This is the fourth item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TABEL DATA TAKSASI ================================================= -->
+          <div class="row row-cards">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card card-body">
+                <div class="card-status-top bg-green"></div>
+                <div class="card-header" href="#card_taksasi" data-bs-toggle="collapse" style="cursor: pointer">
+                  <div class="card-title">Data Taksasi</div>
+                  <div class="card-options">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="5" cy="12" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="card_taksasi" class="collapse">
+                  <div class="card-body">
+                    <div class="col-md-12 col-lg-12">
+                      BLABLA
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TABEL DATA ANALISA ================================================= -->
+          <div class="row row-cards">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card card-body">
+                <div class="card-status-top bg-orange"></div>
+                <div class="card-header" href="#card_analisa" data-bs-toggle="collapse" style="cursor: pointer">
+                  <div class="card-title">Data Analisa</div>
+                  <div class="card-options">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="5" cy="12" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="card_analisa" class="collapse">
+                  <div class="card-body">
+                    <div class="col-md-12 col-lg-12">
+                      BLABLA
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TABEL DATA PEKERJAAN ================================================= -->
+          <div class="row row-cards">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card card-body">
+                <div class="card-status-top bg-purple"></div>
+                <div class="card-header" href="#card_pekerjaan" data-bs-toggle="collapse" style="cursor: pointer">
+                  <div class="card-title">Data Pekerjaan Kebun</div>
+                  <div class="card-options">
+                  	<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="5" cy="12" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="card_pekerjaan" class="collapse">
+                  <div class="card-body">
+                    <div class="col-md-12 col-lg-12">
+                      BLABLA
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TABEL DATA PRODUKSI ================================================= -->
+          <div class="row row-cards">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card card-body">
+                <div class="card-status-top bg-blue"></div>
+                <div class="card-header" href="#card_produksi" data-bs-toggle="collapse" style="cursor: pointer">
+                  <div class="card-title">Data Produksi Kebun</div>
+                  <div class="card-options">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="5" cy="12" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="card_produksi" class="collapse">
+                  <div class="card-body">
+                    <div class="col-md-12 col-lg-12">
+                      BLABLA
                     </div>
                   </div>
                 </div>
