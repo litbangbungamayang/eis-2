@@ -4,9 +4,20 @@ namespace App\Controllers;
 
 class C_petak_kebun extends BaseController
 {
+
 	public function index()
 	{
 		return view('petak_kebun');
+	}
+
+	public function detail_petak()
+	{
+		$kode_blok = $this->request->getGet("kode_blok");
+		$params['kode_blok'] = $kode_blok;
+		$data = json_decode($this->model_petakKebun->getDetailPetak($params));
+		$data = (array) $data[0];
+		//var_dump($data); die();
+		return view('detail_petak', $data);
 	}
 
 	public function overview(){

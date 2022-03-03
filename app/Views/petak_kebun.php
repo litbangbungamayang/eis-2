@@ -26,19 +26,20 @@
           <div class="row row-cards">
             <!-- PREVIEW -->
             <div class="col-sm-4 col-lg-4">
-                <div class="card card-body sticky-top">
+                <div class="card card-body sticky-top"> <!-- NOTES: sticky-top supaya kotak preview tetap diatas! -->
                     <h3 class="card-title">Detail Petak</h3>
                     <div class="card-img-top img-responsive img-responsive-16by9" style="background-image: url(./public/assets/profil_petak.jpg)"></div>
                     <div class="subheader">kepemilikan</div>
-                    <div class="h4 mb-3" id="lbl_kepemilikan">[kepemilikan]</div>
+                    <div class="h4 mb-3" id="lbl_kepemilikan">-</div>
                     <div class="subheader">Deskripsi</div>
-                    <div class="h4 mb-3" id="lbl_deskripsi_blok">[deskripsi_blok]</div>
+                    <div class="h4 mb-3" id="lbl_deskripsi_blok">-</div>
                     <div class="subheader">Kategori</div>
-                    <div class="h4 mb-3" id="lbl_kategori">[kategori]</div>
+                    <div class="h4 mb-3" id="lbl_kategori">-</div>
                     <div class="subheader">Varietas</div>
-                    <div class="h4 mb-3" id="lbl_varietas">[varietas]</div>
+                    <div class="h4 mb-3" id="lbl_varietas">-</div>
+                    <div id="kode_blok" style="display:none"></div>
                     <div class="card-text">
-                      <a href="#" class="btn btn-primary">Lihat Detail</a>
+                      <a href="#" class="btn btn-primary" id="btn_detail_petak">Lihat Detail</a>
                     </div>
                 </div>
             </div>

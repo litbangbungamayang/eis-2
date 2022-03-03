@@ -26,45 +26,6 @@
   var lbl_kategori = $("#lbl_kategori");
   var lbl_varietas = $("#lbl_varietas");
   var lbl_kepemilikan = $("#lbl_kepemilikan");
-  var lbl_kode_blok = $("#kode_blok");
-  var btn_detail_petak = $("#btn_detail_petak");
-  var selectedPetak = "";
-
-  $("#tblPetak").DataTable({
-    bFilter: true,
-    bPaginate: true,
-    bSort: false,
-    bInfo: false,
-    select: true,
-    dom: '<"row"<"labelTahunGiling"><"cbxTahunGiling">f>t<"spacer">pl',
-    ajax: {
-      url: js_base_url + "C_petak_kebun/getAllPetak?tahun_giling=2022&pg=7TK",
-      dataSrc: ""
-    },
-    columns : [
-      {
-        data: "no",
-        render: function(data, type, row, meta){
-          return meta.row + 1;
-        }
-      },
-      {data: "deskripsi_blok"},
-      {data: "luas_tanam"},
-      {data: "nama_varietas"}
-    ]
-  })
-
-  $("#tblPetak").on("click", "tbody tr", function(){
-    //console.log($("#tblPetak").DataTable().row(this).data());
-    let selectedData = $("#tblPetak").DataTable().row(this).data();
-    lbl_deskripsi_blok.text(selectedData.deskripsi_blok);
-    lbl_kategori.text(selectedData.status_blok);
-    lbl_varietas.text(selectedData.nama_varietas);
-    lbl_kepemilikan.text(selectedData.kepemilikan);
-    lbl_kode_blok.text(selectedData.kode_blok);
-    btn_detail_petak.attr("href",js_base_url + "detail_petak?kode_blok=" + selectedData.kode_blok);
-  })
-
 
   //---------------------------------------//
 
