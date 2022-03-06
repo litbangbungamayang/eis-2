@@ -28,10 +28,10 @@
   function setFixedTop(){
     if (window.scrollY > 220){
       //alert("Munculkan");
-      top_card.classList.add("fixed-top");
+      //top_card.classList.add("fixed-top");
     } else {
       if (window.scrollY < 100){
-        top_card.classList.remove("fixed-top");
+        //top_card.classList.remove("fixed-top");
       }
     }
   }
