@@ -24,6 +24,21 @@ class C_petak_kebun extends BaseController
 		return view('onfarm_overview');
 	}
 
+	public function getTaksasiFromKodePetak(){
+		$params = array(
+			"kode_blok" => $this->request->getGet("kode_blok")
+		);
+		//var_dump("INI ISINYA=".$params["kode_blok"]); die();
+		echo ($this->model_petakKebun->getTaksasiFromKodePetak($params));
+	}
+
+	public function getPekerjaanFromKodePetak(){
+		$params = array(
+			"kode_blok" => $this->request->getGet("kode_blok")
+		);
+		echo $this->model_petakKebun->getPekerjaanFromKodePetak($params);
+	}
+
 	public function getDataLuas(){
 		$this->model_petakKebun = model("M_PetakKebun");
 		$pg = $this->request->getGet("pg");

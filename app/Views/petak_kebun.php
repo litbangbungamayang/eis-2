@@ -45,11 +45,18 @@
             </div>
             <!-- =========================== -->
             <!-- TABEL -->
+            <button
+                    type="button"
+                    class="btn btn-danger btn-floating"
+                    id="btn_backToTop"
+                    style="position: fixed; bottom: 20px; right: 20px; display: none"
+                    >
+              <i class="fas fa-arrow-up"></i>
+            </button>
             <div class="col-sm-12 col-lg-8">
               <div class="card card-body">
-                <div class="card-title"></div>
-                <div class="table-responsive">
-                  <table style="font-size: 0.9em" id="tblPetak" class="table card-table table-vcenter text-nowrap datatable">
+                <div class="table-responsive mb-2">
+                  <table style="font-size: 1em" id="tblPetak" class="table card-table table-vcenter text-nowrap datatable">
                     <thead>
                       <tr>
                         <th class="w-1">No.</th>

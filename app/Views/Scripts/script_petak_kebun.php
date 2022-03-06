@@ -29,6 +29,7 @@
   var lbl_kode_blok = $("#kode_blok");
   var btn_detail_petak = $("#btn_detail_petak");
   var selectedPetak = "";
+  var btn_backToTop = $("#btn_backToTop");
 
   $("#tblPetak").DataTable({
     bFilter: true,
@@ -36,7 +37,8 @@
     bSort: false,
     bInfo: false,
     select: true,
-    dom: '<"row"<"labelTahunGiling"><"cbxTahunGiling">f>t<"spacer">pl',
+    scrollY: false,
+    dom: "lf<'mb-5' t>p",
     ajax: {
       url: js_base_url + "C_petak_kebun/getAllPetak?tahun_giling=2022&pg=7TK",
       dataSrc: ""
@@ -64,6 +66,26 @@
     lbl_kode_blok.text(selectedData.kode_blok);
     btn_detail_petak.attr("href",js_base_url + "detail_petak?kode_blok=" + selectedData.kode_blok);
   })
+  //---------------------------------------//
+
+  function scrollFunction(){
+    if (document.body.scrollTop > 20 ||document.documentElement.scrollTop > 20){
+        //mybutton.style.display = "block";
+        btn_backToTop.css('display', '');
+        btn_backToTop.onClick = function(){
+          alert("Clicked");
+        }
+      } else {
+        btn_backToTop.css('display', 'none');
+        btn_backToTop.onClick = function(){
+          alert("Clicked");
+        }
+      }
+  }
+
+  function backToTop() {
+
+  }
 
 
   //---------------------------------------//
@@ -83,6 +105,11 @@
 
   function defaultLoad(){
     //setInterval(function(){ refreshData() }, 5000);
+    window.onscroll = function(){
+      //---- TO BE IMPLEMENTED ------//
+      //console.log(window.scrollY);
+      //scrollFunction();
+    }
     fetchData();
   }
 </script>

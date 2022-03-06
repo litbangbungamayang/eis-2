@@ -21,21 +21,88 @@
 
 
   //------- VARIABLES DECLARATION ---------//
-
-  var lbl_deskripsi_blok = $("#lbl_deskripsi_blok");
-  var lbl_kategori = $("#lbl_kategori");
-  var lbl_varietas = $("#lbl_varietas");
-  var lbl_kepemilikan = $("#lbl_kepemilikan");
-
+  var lblKodeBlok = $("#kode_blok");
+  var kode_blok;
+  var card_topCard = $("#top_card");
+  //---------------------------------------//
+  function setFixedTop(){
+    if (window.scrollY > 220){
+      //alert("Munculkan");
+      top_card.classList.add("fixed-top");
+    } else {
+      if (window.scrollY < 100){
+        top_card.classList.remove("fixed-top");
+      }
+    }
+  }
   //---------------------------------------//
 
   function fetchData(){
-    /*
-    $.getJSON("C_petak_kebun/getAllPetak?tahun_giling=2022&pg=7TK", function(response){
-      console.log(response);
-      refreshData();
+    $("#dataTaksasi").DataTable({
+      bFilter: true,
+      bPaginate: true,
+      bSort: false,
+      bInfo: false,
+      select: true,
+      dom: 'tpl',
+      ajax: {
+        url: js_base_url + "C_petak_kebun/getTaksasiFromKodePetak?kode_blok=" + kode_blok,
+        dataSrc: ""
+      },
+      columns : [
+        {
+          data: "no",
+          render: function(data, type, row, meta){
+            return meta.row + 1;
+          }
+        },
+        {data: "jenis_taksasi"},
+        {data: "tgl_taksasi"},
+        {
+          data: "taksasi_ton_tebu",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "taksasi_protas",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+      ]
+    });
+    $("#dataPekerjaan").DataTable({
+      bFilter: true,
+      bPaginate: true,
+      bSort: false,
+      bInfo: false,
+      select: true,
+      dom: 'tpl',
+      ajax: {
+        url: js_base_url + "C_petak_kebun/getPekerjaanFromKodePetak?kode_blok=" + kode_blok,
+        dataSrc: ""
+      },
+      columns : [
+        {
+          data: "no",
+          render: function(data, type, row, meta){
+            return meta.row + 1;
+          }
+        },
+        {data: "nama_pekerjaan"},
+        {
+          data: "kuanta_pekerjaan",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {data: "tanggal_pekerjaan"}
+      ]
     })
-    */
   }
 
   function refreshData(){
@@ -44,6 +111,10 @@
 
   function defaultLoad(){
     //setInterval(function(){ refreshData() }, 5000);
+    window.onscroll = function(){
+      setFixedTop();
+    }
+    kode_blok = lblKodeBlok.html();
     fetchData();
   }
 </script>

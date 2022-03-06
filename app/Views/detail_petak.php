@@ -25,25 +25,31 @@
         <div class="container-xl">
           <div class="row row-cards">
             <div class="col-sm-12 col-lg-12">
-              <div class="card card-body">
-                <div class="card-title"><?= esc($deskripsi_blok) ?></div>
-                <div class="row row-cards">
-                  <div class="col-lg-6">
-                    <div>Unit <b><?= esc($nama_unit) ?></b></div>
-                    <div>Kode Petak <b><?= esc($kode_blok) ?></b></div>
-                    <div>Wilayah <b><?= esc($wilayah) ?></b></div>
-                    <div>Afdeling <b><?= esc($divisi) ?></b></div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div>Kategori <b><?= esc($status_blok) ?></b></div>
-                    <div>Varietas <b><?= esc($nama_varietas) ?></b></div>
-                    <div>Masa Tanam <b><?= esc($periode) ?></b></div>
-                    <div>Status <b><?= esc($kepemilikan) ?></b></div>
+              <div class="card" id="top_card">
+                <div class="card-header">
+                  <h3 class="card-title"><?= esc($deskripsi_blok) ?></h3>
+                </div>
+                <div class="card-body">
+                  <div class="row row-cards">
+                    <div class="col-lg-6">
+                      <div style="display:none" id="kode_blok"><?= esc($kode_blok) ?></div>
+                      <div>Unit <b><?= esc($nama_unit) ?></b></div>
+                      <div>Kode Petak <b><?= esc($kode_blok) ?></b></div>
+                      <div>Wilayah <b><?= esc($wilayah) ?></b> Afdeling <b><?= substr(esc($divisi),-2) ?></b></div>
+                      <div>Status <b><?= esc($kepemilikan) ?></b></div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div>Kategori <b><?= esc($status_blok) ?></b></div>
+                      <div>Varietas <b><?= esc($nama_varietas) ?></b></div>
+                      <div>Masa Tanam <b><?= esc($periode) ?></b></div>
+                      <div>Luas <b><?= number_format(esc($luas_tanam),2,'.',',') ?> Ha</b></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- ACCORDION - SEMENTARA BELUM TERPAKAI ==============================
           <div class="row row-cards" style="display:none">
             <div class="col-sm-12 col-lg-12">
               <div class="card card-body">
@@ -100,6 +106,7 @@
               </div>
             </div>
           </div>
+          ======================================================================== -->
           <!-- TABEL DATA TAKSASI ================================================= -->
           <div class="row row-cards">
             <div class="col-sm-12 col-lg-12">
@@ -118,10 +125,22 @@
                   </div>
                 </div>
                 <div id="card_taksasi" class="collapse">
-                  <div class="card-body">
-                    <div class="col-md-12 col-lg-12">
-                      BLABLA
-                    </div>
+                  <div class="card card-body">
+                      <div class="table-responsive">
+                        <table style="font-size: 1em; width: 100%" id="dataTaksasi" class="table card-table table-vcenter text-nowrap datatable">
+                          <thead>
+                            <tr>
+                              <th class="w-1">No.</th>
+                              <th>Jenis Taksasi</th>
+                              <th>Tgl. Taksasi</th>
+                              <th>Ton Tebu</th>
+                              <th>Ton/Ha</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -172,10 +191,21 @@
                   </div>
                 </div>
                 <div id="card_pekerjaan" class="collapse">
-                  <div class="card-body">
-                    <div class="col-md-12 col-lg-12">
-                      BLABLA
-                    </div>
+                  <div class="card card-body">
+                      <div class="table-responsive">
+                        <table style="font-size: 1em; width: 100%" id="dataPekerjaan" class="table card-table table-vcenter text-nowrap datatable">
+                          <thead>
+                            <tr>
+                              <th class="w-1">No.</th>
+                              <th>Nama Aktivitas</th>
+                              <th>Luas (ha)</th>
+                              <th>Tanggal Aktivitas</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                      </div>
                   </div>
                 </div>
               </div>
