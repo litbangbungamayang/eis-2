@@ -166,7 +166,33 @@
                 <div id="card_analisa" class="collapse">
                   <div class="card-body">
                     <div class="col-md-12 col-lg-12">
-                      BLABLA
+                      <div class="row row-cards">
+                        <div class="card-header">
+                          <div class="card-title">Data Analisa Kemasakan</div>
+                        </div>
+                        <div class="card card-body">
+                          <div class="table-responsive">
+                            <table style="font-size: 1em; width: 100%" id="dataAnalisaKemasakan" class="table card-table table-vcenter text-nowrap datatable">
+                              <thead>
+                                <tr>
+                                  <th class="w-1">No.</th>
+                                  <th>Ronde</th>
+                                  <th>Tgl Analisa</th>
+                                  <th>Panjang batang</th>
+                                  <th>Ruas</th>
+                                  <th>Diameter</th>
+                                  <th>Kg/meter</th>
+                                  <th>FK</th>
+                                  <th>KP</th>
+                                  <th>KDT</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
