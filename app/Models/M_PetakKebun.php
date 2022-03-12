@@ -84,6 +84,29 @@ class M_PetakKebun extends Model{
     return json_encode($this->db->query($query, $arg)->getResult());
   }
 
+  public function getAnalisaKemasakanFromKodePetak($params){
+    $query = "
+      select
+        ankem.kode_petak,
+        ankem.ronde,
+        ankem.tgl_analisa,
+        avg(ankem.rata_panjang) as panjang,
+        avg(ankem.rata_ruas) as ruas,
+        avg(ankem.rata_diameter) as diameter,
+        avg(ankem.kg_per_meter) as kgPerMeter,
+        avg(ankem.fk) as fk,
+        avg(ankem.kp) as kp,
+        avg(ankem.kdt) as kdt
+      from tbl_ltb_dataankem ankem
+      join tbl_petak ptk on ankem.kode_petak = ptk.kode_blok
+      where ptk.kode_blok=?
+      group by ankem.ronde, ankem.kode_petak
+      order by ankem.ronde
+    ";
+    $arg = [$params["kode_blok"]];
+    return json_encode($this->db->query($query, $arg)->getResult());
+  }
+
   public function getTaksasiFromKodePetak($params){
     $query = "select
         ptk.kode_blok, taks.jenis_taksasi, taks.taksasi_ton_tebu, taks.taksasi_protas,

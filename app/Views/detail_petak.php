@@ -178,9 +178,9 @@
                                   <th class="w-1">No.</th>
                                   <th>Ronde</th>
                                   <th>Tgl Analisa</th>
-                                  <th>Panjang batang</th>
+                                  <th>Panjang batang (meter)</th>
                                   <th>Ruas</th>
-                                  <th>Diameter</th>
+                                  <th>Diameter (cm)</th>
                                   <th>Kg/meter</th>
                                   <th>FK</th>
                                   <th>KP</th>

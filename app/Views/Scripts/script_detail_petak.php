@@ -103,6 +103,77 @@
         {data: "tanggal_pekerjaan"}
       ]
     })
+    $("#dataAnalisaKemasakan").DataTable({
+      bFilter: true,
+      bPaginate: true,
+      bSort: false,
+      bInfo: false,
+      select: true,
+      dom: 'tpl',
+      ajax: {
+        url: js_base_url + "C_petak_kebun/getAnalisaKemasakanFromKodePetak?kode_blok=" + kode_blok,
+        dataSrc: ""
+      },
+      columns : [
+        {
+          data: "no",
+          render: function(data, type, row, meta){
+            return meta.row + 1;
+          }
+        },
+        {data: "ronde"},
+        {data: "tgl_analisa"},
+        {
+          data: "panjang",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "ruas",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "diameter",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "kgPerMeter",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "fk",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "kp",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+        {
+          data: "kdt",
+          className: "dt-right",
+          render: function(data, type, row, meta){
+            return (parseFloat(data)).toLocaleString(undefined, {maximumFractionDigits:2});
+          },
+        },
+      ]
+    })
   }
 
   function refreshData(){

@@ -39,6 +39,13 @@ class C_petak_kebun extends BaseController
 		echo $this->model_petakKebun->getPekerjaanFromKodePetak($params);
 	}
 
+	public function getAnalisaKemasakanFromKodePetak(){
+		$params = array(
+			"kode_blok" => $this->request->getGet("kode_blok")
+		);
+		echo $this->model_petakKebun->getAnalisaKemasakanFromKodePetak($params);
+	}
+
 	public function getDataLuas(){
 		$this->model_petakKebun = model("M_PetakKebun");
 		$pg = $this->request->getGet("pg");
