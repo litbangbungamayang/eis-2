@@ -209,7 +209,7 @@
       //var ton_masuk_sd = parseFloat(response[0].tebu_masuk);
       //var ton_giling_sd = parseFloat(response[0].tebu_giling);
       var ton_masuk_sd = +response[0].tebu_masuk || 0;
-      var ton_giling_sd = +response[0].tebu_giling;
+      var ton_giling_sd = +response[0].tebu_giling || 0;
       var tebu_masuk_kemarin_buma = parseFloat(response[0].tebu_masuk_kemarin);
       var tebu_masuk_sd_kemarin_buma = parseFloat(response[0].tebu_masuk_sd_kemarin);
       var tebu_masuk_ts_kemarin_buma = parseFloat(response[0].tebu_masuk_ts_kemarin);
@@ -375,8 +375,8 @@
     var url_2 = js_base_url + "C_dashboard/getDataDashboard?pg=cima";
     $.getJSON(url_2, function(response){
       arr_data_dashboard_cima = response[0];
-      var ton_masuk_sd = parseFloat(response[0].tebu_masuk) || 0;
-      var ton_giling_sd = parseFloat(response[0].tebu_giling) || 0;
+      var ton_masuk_sd = parseFloat(response[0].tebu_masuk || 0);
+      var ton_giling_sd = parseFloat(response[0].tebu_giling || 0);
       var tebu_masuk_kemarin = parseFloat(response[0].tebu_masuk_kemarin);
       var tebu_masuk_sd_kemarin = parseFloat(response[0].tebu_masuk_sd_kemarin);
       var tebu_masuk_ts_kemarin_cima = parseFloat(response[0].tebu_masuk_ts_kemarin);
