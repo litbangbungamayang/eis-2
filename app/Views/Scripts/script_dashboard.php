@@ -208,7 +208,7 @@
       arr_data_dashboard_buma = response[0];
       //var ton_masuk_sd = parseFloat(response[0].tebu_masuk);
       //var ton_giling_sd = parseFloat(response[0].tebu_giling);
-      var ton_masuk_sd = +response[0].tebu_masuk;
+      var ton_masuk_sd = +response[0].tebu_masuk || 0;
       var ton_giling_sd = +response[0].tebu_giling;
       var tebu_masuk_kemarin_buma = parseFloat(response[0].tebu_masuk_kemarin);
       var tebu_masuk_sd_kemarin_buma = parseFloat(response[0].tebu_masuk_sd_kemarin);
@@ -219,12 +219,12 @@
       var ha_tebang_ts_kemarin_buma = parseFloat(response[0].ha_tebang_ts_kemarin);
       var ha_tebang_ts_sd_kemarin_buma = parseFloat(response[0].ha_tebang_ts_sd_kemarin);
       //console.log(response[0]);
-      tebu_masuk_sd_buma.text(formatting.format(parseFloat(response[0].tebu_masuk)));
+      tebu_masuk_sd_buma.text(formatting.format(parseFloat(response[0].tebu_masuk) || 0));
       tebu_masuk_hi_buma.text(formatting.format(parseFloat(response[0].tebu_masuk_hi)));
       tebu_giling_hi_buma.text(formatting.format(parseFloat(response[0].tebu_giling_hi)));
       tebu_giling_sd_buma.text(formatting.format(parseFloat(+response[0].tebu_giling).toFixed(2)));
-      protas_hi_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts)/Number(arr_data_lhp_buma.ha_giling_ts)));
-      protas_sd_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd)));
+      protas_hi_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts)/Number(arr_data_lhp_buma.ha_giling_ts) || 0));
+      protas_sd_buma.text(formatting.format(Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd) || 0));
       stok_buma.text(formatting.format(+ton_masuk_sd-+ton_giling_sd));
       //console.log(response[0].tebu_giling_hi);
     })
@@ -246,7 +246,14 @@
     var url_5 = js_base_url + "C_dashboard/getTbSetting?pg=buma";
     $.getJSON(url_5, function(response){
       let v_tgl_mulai_giling = new Date(response[0].awal_giling);
-      txt_hargil_buma.text(Math.ceil((v_tgl_giling_skrg - v_tgl_mulai_giling)/(1000*60*60*24))+1);
+      let v_tahun_mulai_giling = v_tgl_mulai_giling.getFullYear();
+      let v_tahun_skrg = v_tgl_giling_skrg.getFullYear();
+      if (v_tahun_mulai_giling != v_tahun_skrg){
+        txt_hargil_buma.text("0");
+      } else {
+        txt_hargil_buma.text(Math.ceil((v_tgl_giling_skrg - v_tgl_mulai_giling)/(1000*60*60*24))+1);
+      }
+
     })
   }
 </script>
@@ -368,8 +375,8 @@
     var url_2 = js_base_url + "C_dashboard/getDataDashboard?pg=cima";
     $.getJSON(url_2, function(response){
       arr_data_dashboard_cima = response[0];
-      var ton_masuk_sd = parseFloat(response[0].tebu_masuk);
-      var ton_giling_sd = parseFloat(response[0].tebu_giling);
+      var ton_masuk_sd = parseFloat(response[0].tebu_masuk) || 0;
+      var ton_giling_sd = parseFloat(response[0].tebu_giling) || 0;
       var tebu_masuk_kemarin = parseFloat(response[0].tebu_masuk_kemarin);
       var tebu_masuk_sd_kemarin = parseFloat(response[0].tebu_masuk_sd_kemarin);
       var tebu_masuk_ts_kemarin_cima = parseFloat(response[0].tebu_masuk_ts_kemarin);
@@ -381,10 +388,10 @@
 
       tebu_masuk_sd_cima.text(formatting.format(parseFloat(response[0].tebu_masuk)));
       tebu_masuk_hi_cima.text(formatting.format(parseFloat(response[0].tebu_masuk_hi)));
-      tebu_giling_hi_cima.text(formatting.format(parseFloat(response[0].tebu_giling_hi)));
-      tebu_giling_sd_cima.text(formatting.format(parseFloat(response[0].tebu_giling)));
-      protas_hi_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts)/Number(arr_data_lhp_cima.ha_giling_ts)));
-      protas_sd_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd)));
+      tebu_giling_hi_cima.text(formatting.format(parseFloat(response[0].tebu_giling_hi || 0)));
+      tebu_giling_sd_cima.text(formatting.format(parseFloat(response[0].tebu_giling || 0)));
+      protas_hi_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts)/Number(arr_data_lhp_cima.ha_giling_ts) || 0));
+      protas_sd_cima.text(formatting.format(Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd) || 0));
       stok_cima.text(formatting.format(ton_masuk_sd-ton_giling_sd));
     })
     var url_3 = js_base_url + "C_dashboard/getLastLhp?pg=cima";
@@ -400,7 +407,13 @@
     var url_5 = js_base_url + "C_dashboard/getTbSetting?pg=cima";
     $.getJSON(url_5, function(response){
       let v_tgl_mulai_giling = new Date(response[0].awal_giling);
-      txt_hargil_cima.text(Math.ceil((v_tgl_giling_skrg - v_tgl_mulai_giling)/(1000*60*60*24))+1);
+      let v_tahun_mulai_giling = v_tgl_mulai_giling.getFullYear();
+      let v_tahun_skrg = v_tgl_giling_skrg.getFullYear();
+      if (v_tahun_mulai_giling != v_tahun_skrg){
+        txt_hargil_cima.text("0");
+      } else {
+        txt_hargil_cima.text(Math.ceil((v_tgl_giling_skrg - v_tgl_mulai_giling)/(1000*60*60*24))+1);
+      }
     })
   }
 </script>
@@ -542,18 +555,18 @@
     let ha_tebang_ts_kemarin = Number(arr_data_dashboard_buma.ha_tebang_ts_kemarin) + Number(arr_data_dashboard_cima.ha_tebang_ts_kemarin);
     let ha_tebang_ts_sd_kemarin = Number(arr_data_dashboard_buma.ha_tebang_ts_sd_kemarin) + Number(arr_data_dashboard_cima.ha_tebang_ts_sd_kemarin);
     //console.log(tebu_masuk_ts_sd_kemarin);
-    tebu_masuk_hi_bcn.text(formatting.format(parseFloat(ton_masuk_hi_bcn).toFixed(2)));
-    tebu_giling_hi_bcn.text(formatting.format(ton_giling_hi_bcn));
-    tebu_masuk_sd_bcn.text(formatting.format(parseFloat(ton_masuk_sd_bcn).toFixed(2)));
-    tebu_giling_sd_bcn.text(formatting.format(ton_giling_sd_bcn));
-    txt_gula_hi_bcn.text(formatting.format(gula_produksi_hi_bcn));
-    txt_gula_sd_bcn.text(formatting.format(gula_produksi_sd_bcn));
+    tebu_masuk_hi_bcn.text(formatting.format(parseFloat(ton_masuk_hi_bcn || 0).toFixed(2)));
+    tebu_giling_hi_bcn.text(formatting.format(ton_giling_hi_bcn || 0));
+    tebu_masuk_sd_bcn.text(formatting.format(parseFloat(ton_masuk_sd_bcn || 0).toFixed(2)));
+    tebu_giling_sd_bcn.text(formatting.format(ton_giling_sd_bcn || 0));
+    txt_gula_hi_bcn.text(formatting.format(gula_produksi_hi_bcn || 0));
+    txt_gula_sd_bcn.text(formatting.format(gula_produksi_sd_bcn || 0));
     //protas_hi_bcn.text(formatting.format(tebu_masuk_ts_kemarin/ha_tebang_ts_kemarin));
     //protas_sd_bcn.text(formatting.format(tebu_masuk_ts_sd_kemarin/ha_tebang_ts_sd_kemarin));
     protas_hi_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts)+Number(arr_data_lhp_cima.ton_giling_ts))/
-      (Number(arr_data_lhp_buma.ha_giling_ts)+Number(arr_data_lhp_cima.ha_giling_ts))));
+      (Number(arr_data_lhp_buma.ha_giling_ts)+Number(arr_data_lhp_cima.ha_giling_ts)) || 0));
     protas_sd_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts_sd)+Number(arr_data_lhp_cima.ton_giling_ts_sd))/
-      (Number(arr_data_lhp_buma.ha_giling_ts_sd)+Number(arr_data_lhp_cima.ha_giling_ts_sd))));
+      (Number(arr_data_lhp_buma.ha_giling_ts_sd)+Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0));
     //------------------------------------------------------
     grafik_bcn.updateSeries([
       {
