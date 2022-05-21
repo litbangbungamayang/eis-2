@@ -610,7 +610,7 @@
     txt_gula_hi_bcn.text(formatting.format(buma_gula_produksi + cima_gula_produksi || 0));
     txt_gula_sd_bcn.text(formatting.format(buma_gula_produksi_sd + cima_gula_produksi_sd || 0));
     protas_hi_bcn.text(formatting.format((cima_ton_giling_ts + buma_ton_giling_ts)/(cima_ha_giling_ts + buma_ha_giling_ts) || 0));
-    protas_sd_bcn.text(formatting.format((cima_ton_giling_sd + buma_ton_giling_sd)/(cima_ha_giling_ts_sd + buma_ha_giling_ts_sd) || 0));
+    protas_sd_bcn.text(formatting.format((cima_ton_giling_ts_sd + buma_ton_giling_ts_sd)/(cima_ha_giling_ts_sd + buma_ha_giling_ts_sd) || 0));
     //------------------------------------------------------
     grafik_bcn.updateSeries([
       {
