@@ -261,6 +261,8 @@
     var url_4 = js_base_url + "C_dashboard/getDataLastLhp?pg=buma";
     $.getJSON(url_4, function(response){
       arr_data_lhp_buma = response[0];
+      buma_gula_produksi = 0;
+      buma_gula_produksi_sd = 0;
       if (arr_data_lhp_buma){
         buma_gula_produksi = parseFloat(arr_data_lhp_buma.gula_produksi);
         buma_gula_produksi_sd = parseFloat(arr_data_lhp_buma.gula_produksi_sd);
@@ -431,6 +433,8 @@
     var url_4 = js_base_url + "C_dashboard/getDataLastLhp?pg=cima";
     $.getJSON(url_4, function(response){
       arr_data_lhp_cima = response[0];
+      cima_gula_produksi = 0;
+      cima_gula_produksi_sd = 0;
       if(arr_data_lhp_cima){
         cima_gula_produksi = parseFloat(arr_data_lhp_cima.gula_produksi);
         cima_gula_produksi_sd = parseFloat(arr_data_lhp_cima.gula_produksi_sd);
@@ -603,6 +607,7 @@
     protas_sd_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts_sd)+Number(arr_data_lhp_cima.ton_giling_ts_sd))/
       (Number(arr_data_lhp_buma.ha_giling_ts_sd)+Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0));
     */
+    console.log(buma_gula_produksi);
     tebu_masuk_hi_bcn.text(formatting.format(cima_tebu_masuk_hi + buma_tebu_masuk_hi || 0));
     tebu_giling_hi_bcn.text(formatting.format(cima_tebu_giling_hi + buma_tebu_giling_hi || 0));
     tebu_masuk_sd_bcn.text(formatting.format(cima_ton_masuk_sd + buma_ton_masuk_sd || 0));
