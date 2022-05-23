@@ -237,12 +237,13 @@
       buma_ha_giling_ts = 0;
       buma_ha_giling_ts_sd = 0;
       if(arr_data_lhp_buma){
-        ton_giling_ts = parseFloat(arr_data_lhp_buma.ton_giling_ts || 0);
-        ton_giling_ts_sd = parseFloat(arr_data_lhp_buma.ton_giling_ts_sd || 0);
-        ha_giling_ts = parseFloat(arr_data_lhp_buma.ha_giling_ts || 0);
-        ha_giling_ts_sd = parseFloat(arr_data_lhp_buma.ha_giling_ts_sd || 0);
+        buma_ton_giling_ts = parseFloat(arr_data_lhp_buma.ton_giling_ts || 0);
+        buma_ton_giling_ts_sd = parseFloat(arr_data_lhp_buma.ton_giling_ts_sd || 0);
+        buma_ha_giling_ts = parseFloat(arr_data_lhp_buma.ha_giling_ts || 0);
+        buma_ha_giling_ts_sd = parseFloat(arr_data_lhp_buma.ha_giling_ts_sd || 0);
       }
       let caneyard_buma = buma_ton_masuk_sd - buma_ton_giling_sd;
+      //console.log(buma_ton_giling_ts_sd);
 
       tebu_masuk_hi_buma.text(formatting.format(buma_tebu_masuk_hi));
       tebu_masuk_sd_buma.text(formatting.format(buma_ton_masuk_sd));
@@ -607,7 +608,7 @@
     protas_sd_bcn.text(formatting.format((Number(arr_data_lhp_buma.ton_giling_ts_sd)+Number(arr_data_lhp_cima.ton_giling_ts_sd))/
       (Number(arr_data_lhp_buma.ha_giling_ts_sd)+Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0));
     */
-    console.log(buma_gula_produksi);
+    //console.log(ton_giling_ts);
     tebu_masuk_hi_bcn.text(formatting.format(cima_tebu_masuk_hi + buma_tebu_masuk_hi || 0));
     tebu_giling_hi_bcn.text(formatting.format(cima_tebu_giling_hi + buma_tebu_giling_hi || 0));
     tebu_masuk_sd_bcn.text(formatting.format(cima_ton_masuk_sd + buma_ton_masuk_sd || 0));
