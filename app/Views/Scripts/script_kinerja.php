@@ -90,6 +90,59 @@
   var arr_target_buma = [];
   var arr_target_cima = [];
   //---------------------------------------//
+  var ton_giling_total_buma = 0;
+  var ton_giling_total_cima = 0;
+  var ton_giling_total_bcn = ton_giling_total_buma + ton_giling_total_cima;
+  var target_tebu_digiling_buma = 0;
+  var target_tebu_digiling_cima = 0;
+  var persen_tebu_digiling_buma = 0;
+  var persen_tebu_digiling_cima =  0;
+  var persen_tebu_digiling_bcn = 0;
+
+  var protas_buma = 0;
+  var target_protas_buma = 0;
+  var persen_protas_buma = 0;
+  var protas_cima = 0;
+  var target_protas_cima = 0;
+  var persen_protas_cima = 0;
+  var protas_bcn = 0;
+  var target_protas_bcn = 0;
+  var persen_protas_bcn = 0;
+
+  var gmpg_buma = 0;
+  var target_gmpg_buma = 0;
+  var persen_gmpg_buma = 0;
+  var gmpg_cima = 0;
+  var target_gmpg_cima = 0;
+  var persen_gmpg_cima = 0;
+  var gmpg_bcn = 0;
+  var target_gmpg_bcn = 0;
+  var persen_gmpg_bcn = 0;
+
+  var gmt_buma = 0;
+  var target_gmt_buma = 0;
+  var persen_gmt_buma = 0;
+  var gmt_cima = 0;
+  var target_gmt_cima = 0;
+  var persen_gmt_cima = 0;
+  var gmt_bcn = 0;
+  var target_gmt_bcn = 0;
+  var persen_gmt_bcn = 0;
+
+  var rend_buma = 0;
+  var target_rend_buma = 0;
+  var persen_rend_buma = 0;
+  var rend_cima = 0;
+  var target_rend_cima = 0;
+  var persen_rend_cima = 0;
+  var hablur_buma = 0;
+  var hablur_cima = 0;
+  var rend_bcn = 0;
+  var target_hablur_buma = 0;
+  var target_hablur_cima =  0;
+  var target_rend_bcn = 0;
+  var persen_rend_bcn = 0;
+  //=================================
 
   function setColor(value){
     switch (value*100) {
@@ -117,77 +170,151 @@
     url = "C_kinerja/getTargetKinerja?kat=" + target + "&pg=buma";
     $.getJSON(url, function(response){
       arr_target_buma = response[0];
-      refreshData();
+      if(arr_target_buma === undefined){
+        resetData();
+      } else {
+        refreshData();
+      }
     })
     url = "C_kinerja/getTargetKinerja?kat=" + target + "&pg=cima";
     $.getJSON(url, function(response){
       arr_target_cima = response[0];
-      console.log(arr_target_cima);
-      refreshData();
+      if(arr_target_cima === undefined){
+        resetData();
+      } else {
+        refreshData();
+      }
     })
+  }
+
+
+
+  function resetData(){
+    //================ UPDATING INDICATORS ====================
+    ton_giling_total_buma = 0;
+    ton_giling_total_cima = 0;
+    ton_giling_total_bcn = ton_giling_total_buma + ton_giling_total_cima;
+    target_tebu_digiling_buma = 0;
+    target_tebu_digiling_cima = 0;
+    persen_tebu_digiling_buma = 0;
+    persen_tebu_digiling_cima =  0;
+    persen_tebu_digiling_bcn = 0;
+
+    protas_buma = 0;
+    target_protas_buma = 0;
+    persen_protas_buma = 0;
+    protas_cima = 0;
+    target_protas_cima = 0;
+    persen_protas_cima = 0;
+    protas_bcn = 0;
+    target_protas_bcn = 0;
+    persen_protas_bcn = 0;
+
+    gmpg_buma = 0;
+    target_gmpg_buma = 0;
+    persen_gmpg_buma = 0;
+    gmpg_cima = 0;
+    target_gmpg_cima = 0;
+    persen_gmpg_cima = 0;
+    gmpg_bcn = 0;
+    target_gmpg_bcn = 0;
+    persen_gmpg_bcn = 0;
+
+    gmt_buma = 0;
+    target_gmt_buma = 0;
+    persen_gmt_buma = 0;
+    gmt_cima = 0;
+    target_gmt_cima = 0;
+    persen_gmt_cima = 0;
+    gmt_bcn = 0;
+    target_gmt_bcn = 0;
+    persen_gmt_bcn = 0;
+
+    rend_buma = 0;
+    target_rend_buma = 0;
+    persen_rend_buma = 0;
+    rend_cima = 0;
+    target_rend_cima = 0;
+    persen_rend_cima = 0;
+    hablur_buma = 0;
+    hablur_cima = 0;
+    rend_bcn = 0;
+    target_hablur_buma = 0;
+    target_hablur_cima =  0;
+    target_rend_bcn = 0;
+    persen_rend_bcn = 0;
+
+    lbl_keterangan.text("Tidak ada data");
+    refreshLabel();
   }
 
   function refreshData(){
     //alert(arr_target_buma.deskripsi);
     //================ UPDATING INDICATORS ====================
-    var ton_giling_total_buma = Number(arr_data_lhp_buma.ton_giling_total_sd) || 0;
-    var ton_giling_total_cima = Number(arr_data_lhp_cima.ton_giling_total_sd) || 0;
-    var ton_giling_total_bcn = ton_giling_total_buma + ton_giling_total_cima;
-    var target_tebu_digiling_buma = Number(arr_target_buma.tebu_digiling_total) || 0;
-    var target_tebu_digiling_cima = Number(arr_target_cima.tebu_digiling_total) || 0;
-    var persen_tebu_digiling_buma = (ton_giling_total_buma)/target_tebu_digiling_buma || 0;
-    var persen_tebu_digiling_cima = (ton_giling_total_cima)/target_tebu_digiling_cima || 0;
-    var persen_tebu_digiling_bcn = (ton_giling_total_buma + ton_giling_total_cima)/
-      (target_tebu_digiling_buma + target_tebu_digiling_cima);
+    ton_giling_total_buma = Number(arr_data_lhp_buma.ton_giling_total_sd) || 0;
+    ton_giling_total_cima = Number(arr_data_lhp_cima.ton_giling_total_sd) || 0;
+    ton_giling_total_bcn = ton_giling_total_buma + ton_giling_total_cima;
+    target_tebu_digiling_buma = Number(arr_target_buma.tebu_digiling_total) || 0;
+    target_tebu_digiling_cima = Number(arr_target_cima.tebu_digiling_total) || 0;
+    persen_tebu_digiling_buma = (ton_giling_total_buma)/target_tebu_digiling_buma || 0;
+    persen_tebu_digiling_cima = (ton_giling_total_cima)/target_tebu_digiling_cima || 0;
+    persen_tebu_digiling_bcn = (ton_giling_total_buma + ton_giling_total_cima)/
+    (target_tebu_digiling_buma + target_tebu_digiling_cima);
 
-    var protas_buma = (Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd)) || 0;
-    var target_protas_buma = Number(arr_target_buma.protas_ts) || 0;
-    var persen_protas_buma = protas_buma/target_protas_buma || 0;
-    var protas_cima = (Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0;
-    var target_protas_cima = Number(arr_target_cima.protas_ts) || 0;
-    var persen_protas_cima = protas_cima/target_protas_cima || 0;
-    var protas_bcn = ((Number(arr_data_lhp_buma.ton_giling_ts_sd) + Number(arr_data_lhp_cima.ton_giling_ts_sd))/
-      (Number(arr_data_lhp_buma.ha_giling_ts_sd) + Number(arr_data_lhp_cima.ha_giling_ts_sd))) || 0;
-    var target_protas_bcn = (Number(arr_target_buma.tebu_digiling_ts) + Number(arr_target_cima.tebu_digiling_ts))/
-      (Number(arr_target_buma.luas_digiling_ts) + Number(arr_target_cima.luas_digiling_ts)) || 0;
-    var persen_protas_bcn = protas_bcn/target_protas_bcn || 0;
+    protas_buma = (Number(arr_data_lhp_buma.ton_giling_ts_sd)/Number(arr_data_lhp_buma.ha_giling_ts_sd)) || 0;
+    target_protas_buma = Number(arr_target_buma.protas_ts) || 0;
+    persen_protas_buma = protas_buma/target_protas_buma || 0;
+    protas_cima = (Number(arr_data_lhp_cima.ton_giling_ts_sd)/Number(arr_data_lhp_cima.ha_giling_ts_sd)) || 0;
+    target_protas_cima = Number(arr_target_cima.protas_ts) || 0;
+    persen_protas_cima = protas_cima/target_protas_cima || 0;
+    protas_bcn = ((Number(arr_data_lhp_buma.ton_giling_ts_sd) + Number(arr_data_lhp_cima.ton_giling_ts_sd))/
+    (Number(arr_data_lhp_buma.ha_giling_ts_sd) + Number(arr_data_lhp_cima.ha_giling_ts_sd))) || 0;
+    target_protas_bcn = (Number(arr_target_buma.tebu_digiling_ts) + Number(arr_target_cima.tebu_digiling_ts))/
+    (Number(arr_target_buma.luas_digiling_ts) + Number(arr_target_cima.luas_digiling_ts)) || 0;
+    persen_protas_bcn = protas_bcn/target_protas_bcn || 0;
 
-    var gmpg_buma = Number(arr_data_lhp_buma.gula_pg_total_sd)|| 0;
-    var target_gmpg_buma = Number(arr_target_buma.gula_ts) + Number(arr_target_buma.gula_ts_eks_tr) || 0;
-    var persen_gmpg_buma = gmpg_buma/target_gmpg_buma || 0;
-    var gmpg_cima = Number(arr_data_lhp_cima.gula_pg_total_sd)|| 0;
-    var target_gmpg_cima = Number(arr_target_cima.gula_ts) + Number(arr_target_cima.gula_ts_eks_tr) || 0;
-    var persen_gmpg_cima = gmpg_cima/target_gmpg_cima || 0;
-    var gmpg_bcn = gmpg_buma + gmpg_cima || 0;
-    var target_gmpg_bcn = target_gmpg_buma + target_gmpg_cima || 0;
-    var persen_gmpg_bcn = gmpg_bcn/target_gmpg_bcn || 0;
+    gmpg_buma = Number(arr_data_lhp_buma.gula_pg_total_sd)|| 0;
+    target_gmpg_buma = Number(arr_target_buma.gula_ts) + Number(arr_target_buma.gula_ts_eks_tr) || 0;
+    persen_gmpg_buma = gmpg_buma/target_gmpg_buma || 0;
+    gmpg_cima = Number(arr_data_lhp_cima.gula_pg_total_sd)|| 0;
+    target_gmpg_cima = Number(arr_target_cima.gula_ts) + Number(arr_target_cima.gula_ts_eks_tr) || 0;
+    persen_gmpg_cima = gmpg_cima/target_gmpg_cima || 0;
+    gmpg_bcn = gmpg_buma + gmpg_cima || 0;
+    target_gmpg_bcn = target_gmpg_buma + target_gmpg_cima || 0;
+    persen_gmpg_bcn = gmpg_bcn/target_gmpg_bcn || 0;
 
-    var gmt_buma = Number(arr_data_lhp_buma.gula_produksi_sd) || 0;
-    var target_gmt_buma = Number(arr_target_buma.gula_total) || 0;
-    var persen_gmt_buma = gmt_buma/target_gmt_buma || 0;
-    var gmt_cima = Number(arr_data_lhp_cima.gula_produksi_sd) || 0;
-    var target_gmt_cima = Number(arr_target_cima.gula_total) || 0;
-    var persen_gmt_cima = gmt_cima/target_gmt_cima || 0;
-    var gmt_bcn = gmt_buma + gmt_cima || 0;
-    var target_gmt_bcn = target_gmt_buma + target_gmt_cima || 0;
-    var persen_gmt_bcn = gmt_bcn/target_gmt_bcn || 0;
+    gmt_buma = Number(arr_data_lhp_buma.gula_produksi_sd) || 0;
+    target_gmt_buma = Number(arr_target_buma.gula_total) || 0;
+    persen_gmt_buma = gmt_buma/target_gmt_buma || 0;
+    gmt_cima = Number(arr_data_lhp_cima.gula_produksi_sd) || 0;
+    target_gmt_cima = Number(arr_target_cima.gula_total) || 0;
+    persen_gmt_cima = gmt_cima/target_gmt_cima || 0;
+    gmt_bcn = gmt_buma + gmt_cima || 0;
+    target_gmt_bcn = target_gmt_buma + target_gmt_cima || 0;
+    persen_gmt_bcn = gmt_bcn/target_gmt_bcn || 0;
 
-    var rend_buma = Number(arr_data_lhp_buma.rend_total_sd) || 0;
-    var target_rend_buma = Number(arr_target_buma.rend_rataan) || 0;
-    var persen_rend_buma = rend_buma/target_rend_buma || 0;
-    var rend_cima = Number(arr_data_lhp_cima.rend_total_sd) || 0;
-    var target_rend_cima = Number(arr_target_cima.rend_rataan) || 0;
-    var persen_rend_cima = rend_cima/target_rend_cima || 0;
-    var hablur_buma = Number(arr_data_lhp_buma.kristal_total_sd) || 0;
-    var hablur_cima = Number(arr_data_lhp_cima.kristal_total_sd) || 0;
-    var rend_bcn = ((hablur_buma + hablur_cima)/ton_giling_total_bcn)*100 || 0;
-    var target_hablur_buma = Number(arr_target_buma.hablur_total) || 0;
-    var target_hablur_cima = Number(arr_target_cima.hablur_total) || 0;
-    var target_rend_bcn = ((target_hablur_buma + target_hablur_cima)/(target_tebu_digiling_buma + target_tebu_digiling_cima))*100 || 0;
-    var persen_rend_bcn = rend_bcn/target_rend_bcn || 0;
+    rend_buma = Number(arr_data_lhp_buma.rend_total_sd) || 0;
+    target_rend_buma = Number(arr_target_buma.rend_rataan) || 0;
+    persen_rend_buma = rend_buma/target_rend_buma || 0;
+    rend_cima = Number(arr_data_lhp_cima.rend_total_sd) || 0;
+    target_rend_cima = Number(arr_target_cima.rend_rataan) || 0;
+    persen_rend_cima = rend_cima/target_rend_cima || 0;
+    hablur_buma = Number(arr_data_lhp_buma.kristal_total_sd) || 0;
+    hablur_cima = Number(arr_data_lhp_cima.kristal_total_sd) || 0;
+    rend_bcn = ((hablur_buma + hablur_cima)/ton_giling_total_bcn)*100 || 0;
+    target_hablur_buma = Number(arr_target_buma.hablur_total) || 0;
+    target_hablur_cima = Number(arr_target_cima.hablur_total) || 0;
+    target_rend_bcn = ((target_hablur_buma + target_hablur_cima)/(target_tebu_digiling_buma + target_tebu_digiling_cima))*100 || 0;
+    persen_rend_bcn = rend_bcn/target_rend_bcn || 0;
 
     lbl_keterangan.text(arr_target_buma.deskripsi);
+    //=========================================================
 
+    refreshLabel();
+
+  }
+
+  function refreshLabel(){
     //====== BUMA ===============
     lbl_persen_tebu_ditebang_buma.text(formatting.format(
       persen_tebu_digiling_buma * 100) + '%');
@@ -267,8 +394,6 @@
     pgb_rend_bcn.css('width', persen_rend_bcn*100 + '%').attr('aria_valuenow', persen_rend_bcn*100);
     pgb_rend_bcn.css('background-color', "hsl(" + (persen_rend_bcn*150) + ",50%,50%)");
     //===========================
-    //=========================================================
-
   }
 
   function initializeComboTarget(){
