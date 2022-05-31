@@ -49,7 +49,7 @@
                </svg>
             </span>
             <span class="nav-link-title">
-              Time series
+              Grafik Kinerja
             </span>
           </a>
         </li>
