@@ -15,7 +15,7 @@
         <div class="row align-items-center">
           <div class="col">
             <h2 class="page-title">
-              Data Time Series
+              Grafik Kinerja Giling
             </h2>
           </div>
         </div>
