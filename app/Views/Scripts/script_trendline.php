@@ -22,10 +22,6 @@ var jenis_data = [{
     }
   ];
 var jenis_data_2 = [{
-    value: 'rend_total', text: 'Rendemen Total'
-  },{
-    value: 'pol_tebu', text: 'Pol Tebu'
-  },{
     value: 'ef_me', text: 'HPG'
   },{
     value: 'ef_bhr', text: 'BHR'
@@ -33,11 +29,17 @@ var jenis_data_2 = [{
     value: 'ef_or', text: 'OR'
 }];
 var jenis_data_3 = [{
-    value: 'persen_pol_tetes', text: 'Pol Tetes'
+    value: 'k_dlm_tetes', text: 'Losses dlm tetes'
   },{
-    value: 'persen_pol_ampas', text: 'Pol Ampas'
+    value: 'k_dlm_ampas', text: 'Losses dlm ampas'
   },{
-    value: 'persen_pol_blotong', text: 'Pol Blotong'
+    value: 'k_dlm_blotong', text: 'Losses dlm blotong'
+  },{
+    value: 'ef_ov', text: 'Losses tdk diketahui'
+  },{
+    value: 'pol_tebu', text: 'Pol tebu'
+  },{
+    value: 'rend_total', text: 'Rend. total'
 }]
 var data_grafik_1 = new Map();
 var data_grafik_2 = new Map();
@@ -449,22 +451,28 @@ function showGrafik(){
         }
         arr_data_grafik_3[i] = {
           name: jenis_data_3[i].text,
-          type: 'line',
+          type: ((jenis_data_3[i].value === 'pol_tebu' || jenis_data_3[i].value === 'rend_total') ? 'column' : 'line'),
           data: baris_data
         }
-        if(jenis_data_3[i].value === 'persen_pol_tetes'){
+        if(jenis_data_3[i].value === 'pol_tebu' || jenis_data_3[i].value === 'rend_total'){
           y_grafik_3[i] = {
-            seriesName: 'Pol Tetes',
+            seriesName: 'Pol Tebu',
             opposite: true,
-            show: true,
+            show: ((jenis_data_3[i].value === 'pol_tebu') ? true : false),
+            forceNiceScale: true,
+            min: 2,
+            max: 10,
             title: {
-              text: '% pol tetes'
+              text: '% pol tebu & rend.'
             }
           }
         } else {
           y_grafik_3[i] = {
-            seriesName: 'Pol Ampas',
-            show: ((jenis_data_3[i].value === 'persen_pol_ampas') ? true : false)
+            seriesName: 'losses',
+            show: ((jenis_data_3[i].value === 'k_dlm_tetes') ? true : false),
+            forceNiceScale: true,
+            min: 0,
+            max: 3
           }
         }
       }
