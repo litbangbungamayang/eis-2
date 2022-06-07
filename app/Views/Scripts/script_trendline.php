@@ -141,7 +141,7 @@ var grafik_options = {
   //colors: ["#69c41f", "#206bc4", "#206bc4",''],
   legend: {
     show: true,
-  }
+  },
 };
 //=====================================
 
@@ -454,6 +454,17 @@ function showGrafik(){
           type: ((jenis_data_3[i].value === 'pol_tebu' || jenis_data_3[i].value === 'rend_total') ? 'column' : 'line'),
           data: baris_data
         }
+        //=== setting warna =============
+        switch(jenis_data_3[i].value){
+          case 'pol_tebu': arr_data_grafik_3[i].color = '#1273de'; break;
+          case 'rend_total': arr_data_grafik_3[i].color = '#00bcd4'; break;
+          case 'ef_ov': arr_data_grafik_3[i].color = '#b80000'; break;
+          case 'k_dlm_ampas' : arr_data_grafik_3[i].color = '#F57C00'; break;
+          case 'k_dlm_tetes' : arr_data_grafik_3[i].color = '#FBC02D'; break;
+          case 'k_dlm_blotong' : arr_data_grafik_3[i].color = '#BF360C'; break;
+        }
+        //===============================
+
         if(jenis_data_3[i].value === 'pol_tebu' || jenis_data_3[i].value === 'rend_total'){
           y_grafik_3[i] = {
             seriesName: 'Pol Tebu',
@@ -476,7 +487,8 @@ function showGrafik(){
           }
         }
       }
-      //==================================
+      //==================================\
+      console.log(arr_data_grafik_3);
       var grafik_1 = new ApexCharts(document.querySelector("#grafik_1"),
           grafik_options
         );
