@@ -38,6 +38,7 @@ $routes->get('/petak_kebun', 'C_petak_kebun::index');
 $routes->get('/detail_petak', 'C_petak_kebun::detail_petak');
 $routes->get('/onfarm_overview', 'C_petak_kebun::overview');
 $routes->get('/trendline', 'C_trendline::index');
+$routes->get('/daily_report', 'C_daily_report::index');
 $routes->add('detail/buma', 'C_detail::onfarm/buma');
 $routes->add('detail/cima', 'C_detail::onfarm/cima');
 
