@@ -15,7 +15,7 @@
         <div class="row align-items-center">
           <div class="col">
             <h2 class="page-title">
-              Monitoring Kinerja
+              Monitoring Giling
             </h2>
             <div class="page-pretitle" id="tgl_giling"></div>
             <div class="page-pretitle" id="tgl_aktual"></div>
@@ -33,6 +33,7 @@
               <!-- Panel grafik -->
               <div class="col-12">
                 <div class="card">
+                  <div class="card-status-top bg-lime"></div>
                   <div class="card-body">
                     <h3 class="card-title">Bungamayang</h3>
                     <div id="hourly-buma" class="chart-lg"></div>
@@ -107,6 +108,7 @@
               <!-- Panel grafik -->
               <div class="col-12">
                 <div class="card">
+                  <div class="card-status-top bg-danger"></div>
                   <div class="card-body">
                     <h3 class="card-title">Cinta Manis</h3>
                     <div id="hourly-cima" class="chart-lg"></div>
@@ -219,9 +221,9 @@
               <div class="card-status-top bg-cyan"></div>
               <div class="card-body p-2 text-center">
                 <div class="h1 m-0" id="protas_hi_bcn">0</div>
-                <div class="text-muted mb-3">protas TS h.i. (ton)</div>
+                <div class="text-muted mb-3">protas TS h.i. (ton/ha)</div>
                 <div class="h1 m-0" id="protas_sd_bcn">0</div>
-                <div class="text-muted mb-3">protas TS s.d. (ton)</div>
+                <div class="text-muted mb-3">protas TS s.d. (ton/ha)</div>
               </div>
             </div>
           </div>

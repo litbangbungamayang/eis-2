@@ -66,6 +66,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
+                  <h3 class="card-title">Pasok dan Tebu Digiling</h3>
                   <div id="grafik_1" class="chart-lg"></div>
                 </div>
               </div>
@@ -77,6 +78,19 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
+                  <h3 class="card-title">KIS dan KES</h3>
+                  <div id="grafik_4" class="chart-lg"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+          <div class="row row-cards">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Efisiensi Pabrik</h3>
                   <div id="grafik_2" class="chart-lg"></div>
                 </div>
               </div>
@@ -88,6 +102,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
+                  <h3 class="card-title">Losses Pabrik</h3>
                   <div id="grafik_3" class="chart-lg"></div>
                 </div>
               </div>

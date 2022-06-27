@@ -41,6 +41,11 @@ var jenis_data_3 = [{
   },{
     value: 'rend_total', text: 'Rend. total'
 }]
+var jenis_data_4 = [{
+    value: 'kis', text: 'KIS'
+  },{
+    value: 'kes', text: 'KES'
+}]
 var data_grafik_1 = new Map();
 var data_grafik_2 = new Map();
 var label_grafik = [];
@@ -349,9 +354,11 @@ function showGrafik(){
   var arr_data_grafik_1 = [];
   var arr_data_grafik_2 = [];
   var arr_data_grafik_3 = [];
+  var arr_data_grafik_4 = [];
   var y_grafik_1 = [];
   var y_grafik_2 = [];
   var y_grafik_3 = [];
+  var y_grafik_4 = [];
   $.ajax({
     url: js_base_url + "C_trendline/getDataGrafik1",
     type: "POST",
@@ -488,6 +495,36 @@ function showGrafik(){
         }
       }
       //==================================\
+      //==================================
+      //=============== baris data grafik 4
+      for(var i = 0; i < jenis_data_4.length; i++){
+        baris_data = []; // ====> pasang disini untuk reset array
+        for(var j = 0; j < data.length; j++){
+          for(var nama_kolom in data[j]){
+            if(nama_kolom === jenis_data_4[i].value){
+              baris_data[j] = data[j][nama_kolom];
+            }
+          }
+        }
+        arr_data_grafik_4[i] = {
+          name: jenis_data_4[i].text,
+          type: 'line',
+          data: baris_data
+        }
+        if(jenis_data_4[i].value === 'kis'){
+          y_grafik_4[i] = {
+            seriesName: 'Kapasitas Giling',
+            min: 0,
+            max: 8000,
+            forceNiceScale: true,
+            show: true,
+            title: {
+              text: 'Kapasitas Giling (TCD)'
+            }
+          };
+        }
+      }
+      //==================================
       console.log(arr_data_grafik_3);
       var grafik_1 = new ApexCharts(document.querySelector("#grafik_1"),
           grafik_options
@@ -498,12 +535,17 @@ function showGrafik(){
       var grafik_3 = new ApexCharts(document.querySelector("#grafik_3"),
           grafik_options
         );
+      var grafik_4 = new ApexCharts(document.querySelector("#grafik_4"),
+          grafik_options
+        );
       grafik_1.render();
       grafik_2.render();
       grafik_3.render();
+      grafik_4.render();
       grafik_1.updateSeries(arr_data_grafik_1);
       grafik_2.updateSeries(arr_data_grafik_2);
       grafik_3.updateSeries(arr_data_grafik_3);
+      grafik_4.updateSeries(arr_data_grafik_4);
       grafik_1.updateOptions({
         labels: label_grafik,
         yaxis: y_grafik_1
@@ -515,6 +557,10 @@ function showGrafik(){
       grafik_3.updateOptions({
         labels: label_grafik,
         yaxis: y_grafik_3
+      });
+      grafik_4.updateOptions({
+        labels: label_grafik,
+        yaxis: y_grafik_4
       });
     }
   })
