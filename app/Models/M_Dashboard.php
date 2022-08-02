@@ -123,7 +123,16 @@ class M_Dashboard extends Model{
         $server_pg = $this->lokal;
         break;
     }
-    $request = array("db_server"=>$server_pg, "url"=>$req);
+    if(is_array($req)){
+      $request = $req["request"];
+      switch($request){
+        case "getLhpByDate":
+          $tgl_lhp = $req["tgl_lhp"];
+          $req = $request."?tgl_lhp=".$tgl_lhp;
+          break;
+      }
+    }
+    $request = array("db_server"=>$server_pg, "url"=>$req,);
     return ($this->getCurl($request));
   }
 

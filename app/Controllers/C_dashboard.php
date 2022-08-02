@@ -62,6 +62,14 @@ class C_dashboard extends BaseController
 		echo json_encode($result);
 	}
 
+	public function getLhpByDate(){
+		$this->model_dashboard = model("M_Dashboard");
+		$pg = $this->request->getGet("pg");
+		$tgl = $this->request->getGet("tgl");
+		$params = array("tgl_lhp"=>$tgl, "request"=>"getLhpByDate");
+		$result = (json_decode($this->model_dashboard->serverRequest($pg,$params)));
+	}
+
 	public function tesDb(){
 		$this->model_dashboard = model("M_Dashboard");
 		echo (($this->model_dashboard->tesDb()));
