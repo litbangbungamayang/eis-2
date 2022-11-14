@@ -24,6 +24,10 @@
   var lblKodeBlok = $("#kode_blok");
   var kode_blok;
   var card_topCard = $("#top_card");
+  var cardPeta = $("#card_peta");
+
+
+
   //---------------------------------------//
   function setFixedTop(){
     if (window.scrollY > 220){
@@ -36,6 +40,45 @@
     }
   }
   //---------------------------------------//
+
+  function loadPeta(){
+    var map = L.map('map');
+    cardPeta[0].addEventListener('shown.bs.collapse', function () {
+      map.invalidateSize();
+      const googleSat = L.gridLayer.googleMutant({
+    		type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+    	});
+      /*
+      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+          }).addTo(map);
+      */
+      var gpx_url = "<? echo base_url(); ?>"+"/public/assets/gpx/tes1.gpx";
+      const gpx_obj = new L.GPX(gpx_url, {
+          async: true,
+          marker_options: {
+            startIconUrl: '',
+            endIconUrl: '',
+            shadowUrl: ''
+          }
+        }
+      ).on('loaded', function(e) {
+        var map_gpx = e.target;
+        map.fitBounds(map_gpx.getBounds());
+      });
+      //drawing layer------------------------------------
+
+      //-------------------------------------------
+      googleSat.addTo(map);
+      gpx_obj.addTo(map);
+      var baseMap = {"Google Sat": googleSat};
+      var overlayMap = {
+        "Petak Kebun": gpx_obj,
+        "Custom": drawingLayer
+      };
+      L.control.layers(baseMap, overlayMap).addTo(map);
+    });
+  }
 
   function fetchData(){
     $("#dataTaksasi").DataTable({
@@ -187,5 +230,6 @@
     }
     kode_blok = lblKodeBlok.html();
     fetchData();
+    loadPeta();
   }
 </script>

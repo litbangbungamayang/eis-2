@@ -107,6 +107,7 @@
             </div>
           </div>
           ======================================================================== -->
+
           <!-- TABEL DATA TAKSASI ================================================= -->
           <div class="row row-cards">
             <div class="col-sm-12 col-lg-12">
@@ -264,16 +265,48 @@
               </div>
             </div>
           </div>
+          <!-- PETA AREAL ================================================= -->
+          <div class="row row-cards">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card card-body">
+                <div class="card-status-top bg-blue"></div>
+                <div class="card-header" href="#card_peta" data-bs-toggle="collapse" style="cursor: pointer">
+                  <div class="card-title">Peta Areal</div>
+                  <div class="card-options">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <circle cx="5" cy="12" r="1" />
+                      <circle cx="12" cy="12" r="1" />
+                      <circle cx="19" cy="12" r="1" />
+                    </svg>
+                  </div>
+                </div>
+                <div id="card_peta" class="collapse">
+                  <div class="card-body">
+                    <div class="col-md-12 col-lg-12">
+                      <div id="map" style="height: 500px">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--===================-->
         </div>
       </div>
       <!--=======================-->
     </div>
+  </div>
 </div>
+
 
 <?= $this->endSection(); ?>
 
 <?= $this->section('scripts'); ?>
-
+<?= $this->include ("Scripts/script_loadLeaflet"); ?>
 <?= $this->include('Scripts/script_detail_petak'); ?>
 
 <?= $this->endSection(); ?>
