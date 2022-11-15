@@ -56,7 +56,7 @@ class M_PetakKebun extends Model{
     $pg = $params["pg"];
     $query = "select
       id_field, ptk.kode_blok, kode_plant, divisi, deskripsi_blok,
-      luas_tanam, periode, status_blok, vart.nama_varietas, ptk.kepemilikan
+      FORMAT(luas_tanam,2) as luas_tanam, periode, status_blok, vart.nama_varietas, ptk.kepemilikan, ptk.mature
       from tbl_petak ptk
       	join tbl_varietas vart on ptk.kode_varietas = vart.id_varietas
       where ptk.mature=? and kode_plant like ?";

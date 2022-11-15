@@ -269,7 +269,7 @@
           <div class="row row-cards">
             <div class="col-sm-12 col-lg-12">
               <div class="card card-body">
-                <div class="card-status-top bg-blue"></div>
+                <div class="card-status-top bg-green"></div>
                 <div class="card-header" href="#card_peta" data-bs-toggle="collapse" style="cursor: pointer">
                   <div class="card-title">Peta Areal</div>
                   <div class="card-options">

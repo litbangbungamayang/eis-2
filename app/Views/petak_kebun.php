@@ -54,20 +54,37 @@
               <i class="fas fa-arrow-up"></i>
             </button>
             <div class="col-sm-12 col-lg-8">
-              <div class="card card-body">
-                <div class="table-responsive mb-2">
-                  <table style="font-size: 1em" id="tblPetak" class="table card-table table-vcenter text-nowrap datatable">
-                    <thead>
-                      <tr>
-                        <th class="w-1">No.</th>
-                        <th>Deskripsi Petak</th>
-                        <th>Luas Tanam</th>
-                        <th>Varietas</th>
-                      </tr>
-                    </thead>
-                    <tbody id="dataPetak">
-                    </tbody>
-                  </table>
+              <div class="row row-cards">
+                <div class="card card-body">
+                  <div class="row row-cards">
+                    <div class="col-sm-8 col-lg-4">
+                      <div class="page-pretitle">Tahun Giling</div>
+                      <select class="custom-control custom-select" id="sel_tahunGiling"></select>
+                    </div>
+                    <div class="col-sm-8 col-lg-4">
+                      <div class="page-pretitle">Kebun</div>
+                      <select class="custom-control custom-select" id="sel_kebun"></select>
+                    </div>
+                    <div class="col-sm-8 col-lg-4">
+                      <div class="page-pretitle">Cari</div>
+                      <input class="form-control" id="txt_cari">
+                    </div>
+                  </div>
+                  <div class="row row-cards">
+                    <div class="table-responsive mb-2">
+                    <table style="font-size: 1em" id="tblPetak" class="table card-table table-vcenter text-nowrap datatable">
+                      <thead>
+                        <tr>
+                          <th>Deskripsi Petak Kebun</th>
+                          <th>Tahun Giling</th>
+                          <th>Luas Tanam</th>
+                        </tr>
+                      </thead>
+                      <tbody id="dataPetak">
+                      </tbody>
+                    </table>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
