@@ -16,7 +16,6 @@ class C_petak_kebun extends BaseController
 		$params['kode_blok'] = $kode_blok;
 		$data = json_decode($this->model_petakKebun->getDetailPetak($params));
 		$data = (array) $data[0];
-		//var_dump($data); die();
 		return view('detail_petak', $data);
 	}
 
@@ -85,6 +84,12 @@ class C_petak_kebun extends BaseController
 			"tahun_giling" => $tahun_giling
 		);
 		echo $this->model_petakKebun->getAllPetak($params);
+	}
+
+	public function getDataProduksiPetak(){
+		$this->model_petakKebun = model("M_PetakKebun");
+		$kode_blok = $this->request->getGet("kode_blok");
+		echo $this->model_petakKebun->getDataProduksiPetak($kode_blok);
 	}
 
 }

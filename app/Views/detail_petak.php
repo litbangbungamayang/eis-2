@@ -31,14 +31,15 @@
                 </div>
                 <div class="card-body">
                   <div class="row row-cards">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div style="display:none" id="kode_blok"><?= esc($kode_blok) ?></div>
                       <div>Unit <b><?= esc($nama_unit) ?></b></div>
                       <div>Kode Petak <b><?= esc($kode_blok) ?></b></div>
                       <div>Wilayah <b><?= esc($wilayah) ?></b> Afdeling <b><?= substr(esc($divisi),-2) ?></b></div>
                       <div>Status <b><?= esc($kepemilikan) ?></b></div>
+                      <div>Tahun Giling <b><?= esc($mature) ?></b></div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                       <div>Kategori <b><?= esc($status_blok) ?></b></div>
                       <div>Varietas <b><?= esc($nama_varietas) ?></b></div>
                       <div>Masa Tanam <b><?= esc($periode) ?></b></div>
@@ -114,7 +115,7 @@
               <div class="card card-body">
                 <div class="card-status-top bg-green"></div>
                 <div class="card-header" href="#card_taksasi" data-bs-toggle="collapse" style="cursor: pointer">
-                  <div class="card-title">Data Taksasi</div>
+                  <div class="card-title">Taksasi Produksi</div>
                   <div class="card-options">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -169,7 +170,7 @@
                     <div class="col-md-12 col-lg-12">
                       <div class="row row-cards">
                         <div class="card-header">
-                          <div class="card-title">Data Analisa Kemasakan</div>
+                          <div class="card-title">Analisa Kemasakan</div>
                         </div>
                         <div class="card card-body">
                           <div class="table-responsive">
@@ -206,7 +207,7 @@
               <div class="card card-body">
                 <div class="card-status-top bg-purple"></div>
                 <div class="card-header" href="#card_pekerjaan" data-bs-toggle="collapse" style="cursor: pointer">
-                  <div class="card-title">Data Pekerjaan Kebun</div>
+                  <div class="card-title">Pekerjaan Kebun</div>
                   <div class="card-options">
                   	<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -244,7 +245,7 @@
               <div class="card card-body">
                 <div class="card-status-top bg-blue"></div>
                 <div class="card-header" href="#card_produksi" data-bs-toggle="collapse" style="cursor: pointer">
-                  <div class="card-title">Data Produksi Kebun</div>
+                  <div class="card-title">Produksi Kebun</div>
                   <div class="card-options">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -258,7 +259,12 @@
                 <div id="card_produksi" class="collapse">
                   <div class="card-body">
                     <div class="col-md-12 col-lg-12">
-                      BLABLA
+                      <p>AFF KEBUN : <span class="badge bg-red" id="txtAffKebun"></span></p>
+                      <p>TON TEBU DITEBANG (TON) : <span id="txtTonTebang"></span></p>
+                      <p>PRODUKTIVITAS (TON/HA) : <span id="txtProtas"></span></p>
+                      <p>AWAL TEBANG : <span id="txtAwalTebang"></span></p>
+                      <p>AKHIR TEBANG : <span id="txtAkhirTebang"></span></p>
+                      <p>LAMA TEBANG (HARI) : <span id="txtLamaTebang"></span></p>
                     </div>
                   </div>
                 </div>

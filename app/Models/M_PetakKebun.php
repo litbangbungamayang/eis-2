@@ -68,6 +68,7 @@ class M_PetakKebun extends Model{
     $query = "select
       id_field, ptk.kode_blok, kode_plant, divisi, deskripsi_blok, divisi,
       luas_tanam, periode, status_blok, vart.nama_varietas, ptk.kepemilikan,
+      ptk.mature,
       (case
           when ptk.kepemilikan = 'TS-HG' then mid(ptk.kode_blok,9,1)
           when ptk.kepemilikan = 'TR-KR' then 'TR'
@@ -131,6 +132,19 @@ class M_PetakKebun extends Model{
     ";
     $arg = [$params["kode_blok"]];
     return json_encode($this->db->query($query, $arg)->getResult());
+  }
+
+  function getDataProduksiPetak($params){
+    $pg = "";
+    switch (substr($params,0,4)){
+      case "7TK1":
+        $pg = "buma";
+        break;
+      case "7TK2":
+        $pg = "cima";
+        break;
+    }
+    return ($this->getCurl(array("db_server"=>$this->getServer($pg), "url"=>"getDataTebangPetak?kode_blok=".$params)));
   }
 
   function getCurl($request){

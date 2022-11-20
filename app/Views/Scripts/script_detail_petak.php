@@ -25,9 +25,12 @@
   var kode_blok;
   var card_topCard = $("#top_card");
   var cardPeta = $("#card_peta");
-
-
-
+  var txtAffKebun = $("#txtAffKebun");
+  var txtTonTebang = $("#txtTonTebang");
+  var txtProtas = $("#txtProtas");
+  var txtAwalTebang = $("#txtAwalTebang");
+  var txtAkhirTebang = $("#txtAkhirTebang");
+  var txtLamaTebang = $("#txtLamaTebang");
   //---------------------------------------//
   function setFixedTop(){
     if (window.scrollY > 220){
@@ -48,11 +51,6 @@
       const googleSat = L.gridLayer.googleMutant({
     		type: "satellite", // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
     	});
-      /*
-      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
-          }).addTo(map);
-      */
       var gpx_url = "<? echo base_url(); ?>"+"/public/assets/gpx/tes1.gpx";
       const gpx_obj = new L.GPX(gpx_url, {
           async: true,
@@ -217,6 +215,23 @@
         },
       ]
     })
+    $.getJSON(js_base_url + "C_petak_kebun/getDataProduksiPetak?kode_blok=" + kode_blok, function(response){
+      if (response !== null){
+        console.log(response[0]);
+        if(response[0].aff_tebang == 0){
+          txtAffKebun.className = "badge bg-red";
+          txtAffKebun[0].textContent = "BELUM AFF";
+        } else {
+          txtAffKebun.className = "badge bg-green";
+          txtAffKebun[0].textContent = "SUDAH AFF";
+        }
+        txtTonTebang[0].textContent = response[0].total_tebu;
+        txtProtas[0].textContent = response[0].produktivitas;
+        txtAwalTebang[0].textContent = response[0].awal_tebang;
+        txtAkhirTebang[0].textContent = response[0].akhir_tebang;
+        txtLamaTebang[0].textContent = response[0].lama_tebang;
+      }
+    });
   }
 
   function refreshData(){
