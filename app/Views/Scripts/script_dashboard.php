@@ -92,7 +92,24 @@
   function defaultLoad(){
     refreshData();
     setInterval(function(){ refreshData() }, 5000);
+    /* TES GPS LOCATION */
+    getLocation();
+    /********************/
   }
+
+  function getLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(logPosition);
+    } else {
+      alert("Geolocation is not supported");
+    }
+  }
+
+  function logPosition(position){
+    console.log(position.coords.latitude + "," + position.coords.longitude);
+    alert(position.coords.latitude + "," + position.coords.longitude);
+  }
+
   function convertArrayToNumber(arrToConvert){
     if (Array.isArray(arrToConvert)){
       var arrResult = [];
