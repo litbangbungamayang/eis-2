@@ -254,10 +254,10 @@
       buma_ha_giling_ts = 0;
       buma_ha_giling_ts_sd = 0;
       if(arr_data_lhp_buma){
-        buma_ton_giling_ts = parseFloat(arr_data_lhp_buma.ton_giling_ts || 0);
-        buma_ton_giling_ts_sd = parseFloat(arr_data_lhp_buma.ton_giling_ts_sd || 0);
-        buma_ha_giling_ts = parseFloat(arr_data_lhp_buma.ha_giling_ts || 0);
-        buma_ha_giling_ts_sd = parseFloat(arr_data_lhp_buma.ha_giling_ts_sd || 0);
+        buma_ton_giling_ts = parseFloat(arr_data_lhp_buma.ton_giling_ts_ptpn || 0);
+        buma_ton_giling_ts_sd = parseFloat(arr_data_lhp_buma.ton_giling_ts_ptpn_sd || 0);
+        buma_ha_giling_ts = parseFloat(arr_data_lhp_buma.ha_giling_ts_ptpn || 0);
+        buma_ha_giling_ts_sd = parseFloat(arr_data_lhp_buma.ha_giling_ts_ptpn_sd || 0);
       }
       let caneyard_buma = buma_ton_masuk_sd - buma_ton_giling_sd;
       //console.log(buma_ton_giling_ts_sd);
@@ -274,16 +274,18 @@
     $.getJSON(url_3, function(response){
       if (response !== null){
         tgl_last_lhp_buma = new Date(response[0].last_lhp);
+        //tgl_last_lhp_buma = "2022-07-01";
       }
     })
     var url_4 = js_base_url + "C_dashboard/getDataLastLhp?pg=buma";
     $.getJSON(url_4, function(response){
+      console.log(response[0]);
       arr_data_lhp_buma = response[0];
       buma_gula_produksi = 0;
       buma_gula_produksi_sd = 0;
       if (arr_data_lhp_buma){
-        buma_gula_produksi = parseFloat(arr_data_lhp_buma.gula_produksi);
-        buma_gula_produksi_sd = parseFloat(arr_data_lhp_buma.gula_produksi_sd);
+        buma_gula_produksi = parseFloat(arr_data_lhp_buma.gula_tr_ts_ptpn);
+        buma_gula_produksi_sd = parseFloat(arr_data_lhp_buma.gula_tr_ts_ptpn_sd);
         txt_gula_hi_buma.text(formatting.format(buma_gula_produksi || 0));
         txt_gula_sd_buma.text(formatting.format(buma_gula_produksi_sd || 0));
       }
@@ -429,10 +431,10 @@
      cima_ha_giling_ts = 0;
      cima_ha_giling_ts_sd = 0;
       if(arr_data_lhp_cima){
-        cima_ton_giling_ts = parseFloat(arr_data_lhp_cima.ton_giling_ts || 0);
-        cima_ton_giling_ts_sd = parseFloat(arr_data_lhp_cima.ton_giling_ts_sd || 0);
-        cima_ha_giling_ts = parseFloat(arr_data_lhp_cima.ha_giling_ts || 0);
-        cima_ha_giling_ts_sd = parseFloat(arr_data_lhp_cima.ha_giling_ts_sd || 0);
+        cima_ton_giling_ts = parseFloat(arr_data_lhp_cima.ton_giling_ts_ptpn || 0);
+        cima_ton_giling_ts_sd = parseFloat(arr_data_lhp_cima.ton_giling_ts_ptpn_sd || 0);
+        cima_ha_giling_ts = parseFloat(arr_data_lhp_cima.ha_giling_ts_ptpn || 0);
+        cima_ha_giling_ts_sd = parseFloat(arr_data_lhp_cima.ha_giling_ts_ptpn_sd || 0);
       }
       let caneyard_cima = cima_ton_masuk_sd - cima_ton_giling_sd;
 
@@ -454,8 +456,8 @@
       cima_gula_produksi = 0;
       cima_gula_produksi_sd = 0;
       if(arr_data_lhp_cima){
-        cima_gula_produksi = parseFloat(arr_data_lhp_cima.gula_produksi);
-        cima_gula_produksi_sd = parseFloat(arr_data_lhp_cima.gula_produksi_sd);
+        cima_gula_produksi = parseFloat(arr_data_lhp_cima.gula_tr_ts_ptpn);
+        cima_gula_produksi_sd = parseFloat(arr_data_lhp_cima.gula_tr_ts_ptpn_sd);
         txt_gula_hi_cima.text(formatting.format(cima_gula_produksi || 0));
         txt_gula_sd_cima.text(formatting.format(cima_gula_produksi_sd || 0));
       }

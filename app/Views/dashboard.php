@@ -94,9 +94,9 @@
                   <div class="card-status-top bg-lime"></div>
                   <div class="card-body p-2 text-center">
                     <div class="h1 m-0" id="gula_hi_buma">0</div>
-                    <div class="text-muted mb-3">produksi gula (ton)</div>
+                    <div class="text-muted mb-3">produksi gula TS (ton)</div>
                     <div class="h1 m-0" id="gula_sd_buma">0</div>
-                    <div class="text-muted mb-3">produksi gula s.d. (ton)</div>
+                    <div class="text-muted mb-3">produksi gula TS s.d. (ton)</div>
                   </div>
                 </div>
               </div>
@@ -170,9 +170,9 @@
                   <div class="card-status-top bg-danger"></div>
                   <div class="card-body p-2 text-center">
                     <div class="h1 m-0" id="gula_hi_cima">0</div>
-                    <div class="text-muted mb-3">produksi gula (ton)</div>
+                    <div class="text-muted mb-3">produksi gula TS (ton)</div>
                     <div class="h1 m-0" id="gula_sd_cima">0</div>
-                    <div class="text-muted mb-3">produksi gula s.d. (ton)</div>
+                    <div class="text-muted mb-3">produksi gula TS s.d. (ton)</div>
                   </div>
                 </div>
               </div>
@@ -233,9 +233,9 @@
               <div class="card-status-top bg-cyan"></div>
               <div class="card-body p-2 text-center">
                 <div class="h1 m-0" id="gula_hi_bcn">0</div>
-                <div class="text-muted mb-3">produksi gula (ton)</div>
+                <div class="text-muted mb-3">produksi gula TS (ton)</div>
                 <div class="h1 m-0" id="gula_sd_bcn">0</div>
-                <div class="text-muted mb-3">produksi gula s.d. (ton)</div>
+                <div class="text-muted mb-3">produksi gula TS s.d. (ton)</div>
               </div>
             </div>
           </div>

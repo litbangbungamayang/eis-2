@@ -14,6 +14,7 @@ class C_dashboard extends BaseController
 			$tglTimbang = date("Y-m-d", strtotime($tglTimbang. '- 1 day'));
 		}
 		$result = (json_decode($this->model_dashboard->serverRequest($pg,"getMonitoringIntegrasi?tglTimbang=".$tglTimbang)));
+		//$result = (json_decode($this->model_dashboard->serverRequest($pg,"getMonitoringIntegrasi?tglTimbang=2022-06-15")));
 		$array_jam = [];
 		$array_tebu = [];
 		$array_digiling = [];
