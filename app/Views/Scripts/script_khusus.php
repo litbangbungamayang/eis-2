@@ -68,6 +68,7 @@
         var dataKhusus = response;
         $.getJSON(url_sd, function(response){
           var dataKhususSd = response;
+          tabel_data = '';
           if(dataKhusus.length > 1){
             dataKhusus.forEach((item, index) => {
               ton_total = ton_total + parseFloat(dataKhusus[index].ton_tebu);
