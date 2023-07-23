@@ -22,6 +22,23 @@ class C_kinerja extends BaseController
 		$this->model_dashboard = model("M_Dashboard");
 		echo ($this->model_dashboard->getTargetKinerja($kategori, $pg));
 	}
+
+	public function khusus(){
+		return view('data_khusus');
+	}
+
+	public function getDataKhusus(){
+		$this->model_dashboard = model("M_Dashboard");
+		$request = $this->request->getGet('tgl');
+		echo $this->model_dashboard->getDataKhusus($request);
+	}
+
+	public function getDataKhususSd(){
+		$this->model_dashboard = model("M_Dashboard");
+		$request = $this->request->getGet('tgl');
+		echo $this->model_dashboard->getDataKhususSd($request);
+	}
+
 }
 
 

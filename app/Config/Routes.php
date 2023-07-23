@@ -41,6 +41,7 @@ $routes->get('/trendline', 'C_trendline::index');
 $routes->get('/daily_report', 'C_daily_report::index');
 $routes->add('detail/buma', 'C_detail::onfarm/buma');
 $routes->add('detail/cima', 'C_detail::onfarm/cima');
+$routes->get('khusus', 'C_kinerja::khusus');
 
 
 /*

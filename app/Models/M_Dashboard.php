@@ -90,6 +90,15 @@ class M_Dashboard extends Model{
     return ($this->getCurl(array("db_server"=>$this->getServer($pg), "url"=>"getGilingSeinduk?tgl_last_lhp=".$tgl_last_lhp)));
   }
 
+  public function getDataKhusus($request){
+    //var_dump($request);
+    return ($this->getCurl(array("db_server"=>$this->getServer("buma"), "url"=>"getDataScHi?tgl=".$request)));
+  }
+
+  public function getDataKhususSd($request){
+    return ($this->getCurl(array("db_server"=>$this->getServer("buma"), "url"=>"getDataScSd?tgl=".$request)));
+  }
+
   function getCurl($request){
     $db_server = $request["db_server"];
     $url = str_replace(" ", "", $request["url"]);
